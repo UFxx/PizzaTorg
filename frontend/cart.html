@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+
     <!-- PoiretOne Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,9 +23,9 @@
     <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/product.css" />
+    <link rel="stylesheet" href="assets/css/cart.css" />
 
-    <title>Document</title>
+    <title>Корзина</title>
   </head>
   <body>
     <header>
@@ -166,120 +173,50 @@
         </div>
       </div>
     </header>
-    <div class="container">
-      <div class="product-title">Осетинский пирог с сыром. Уалибах</div>
-      <div class="product-content">
-        <div class="product-img">
-          <img src="assets/images/product-img.png" alt="" />
-        </div>
-        <div class="product-info">
-          <p class="available">В наличии</p>
-          <p class="price">979₽ за 1 шт.</p>
-          <div class="add-to-cart__container">
-            <input type="number" value="1" /> шт.
-            <button>Добавить в корзину</button>
+  <div class="container">
+    <p class="title">Корзина</p>
+    <div class="cart-content">
+      <div class="cart-item">
+        <div class="item-img"><img src="assets/images/product-img.png" alt=""></div>
+        <div class="cart-item-info">
+          <div class="item-title">
+            <p>Пирог с картофелем и осетинским сыром. Картофджын.</p>
+             <span>
+              <img class="delete-product-button" src="assets/images/times.png" alt="delete product button">
+            </span>
           </div>
-          <div class="characteristics">
-            <p>Размер: <span>36</span>см.</p>
-            <p>Состав: <span>тесто дрожжевое, осетинский сыр, специи</span></p>
-            <p>Вес: <span>1000</span> гр.</p>
+          <div class="item-count">
+            <input type="number" value="1"><p>шт.</p>
           </div>
-          <div class="rating">Средняя оценка: <span>4.7</span></div>
-          <div class="rating-stars">
-            <img src="assets/images/rating-star.png" alt="" />
-            <img src="assets/images/rating-star.png" alt="" />
-            <img src="assets/images/rating-star.png" alt="" />
-            <img src="assets/images/rating-star.png" alt="" />
-            <img src="assets/images/rating-star.png" alt="" />
-          </div>
+          <p class="item-price">1020<span>₽</span></p>
         </div>
       </div>
-      <div class="product-description">
-        <div class="product-description-title">
-          <p>Описание:</p>
-        </div>
-        <p class="product-description-text">
-          Осетинский пирог с сыром от нашей пекарни – одно из любимейших
-          угощений. Горячая сочная начинка и тонкая хрустящая корочка понравится
-          всем, кто хочет быстро сделать заказ и вкусно перекусить. Уалибах не
-          просто осетинский пирог – это только натуральные продукты: дрожжевое
-          тесто из муки высшего качества, сыр-цыхт из цельного коровьего молока
-          и ароматные пряности. Мы закупаем ингредиенты ежедневно, чтобы
-          гарантировать их свежесть. Нежный осетинский пирог с сыром буквально
-          тает во рту, а сама лепешка настолько сытная, что вполне заменит
-          полноценный обед. Мы с удовольствием приготовим на заказ для вас
-          осетинский пирог уалибах и быстрая доставка его в специальной
-          термоупаковке гарантирована, – блюдо на вашем столе окажется еще
-          горячим. Выбирайте осетинские пироги с сыром на сайте ПиццаТорг и
-          наслаждайтесь угощением в кругу друзей, коллег дома или в офисе!
-        </p>
-      </div>
-      <div class="product-feedback">
-        <div class="feedback-title">
-          <p>Отзывы:</p>
-        </div>
-        <div class="feedback-content">
-          <div class="feedback-item">
-            <p class="feedback-username">Анна</p>
-            <p class="feedback-date">17 октября 2022 11:33</p>
-            <p class="feedback-text">
-              Здравствуйте! Благодарю за очень вкусные осетинские пироги с сыром
-              и пиццу. Служба доставки доставила вовремя. Рекомендую! Успехов
-              вам в работе:)
-            </p>
-            <p class="feedback-rating">
-              <img src="assets/images/rating-star.png" alt="" />
-              <img src="assets/images/rating-star.png" alt="" />
-              <img src="assets/images/rating-star.png" alt="" />
-              <img src="assets/images/rating-star.png" alt="" />
-              <img src="assets/images/rating-star.png" alt="" />
-            </p>
+      <div class="cart-item">
+        <div class="item-img"><img src="assets/images/product-img.png" alt=""></div>
+        <div class="cart-item-info">
+          <div class="item-title">
+            <p>Пирог с картофелем и осетинским сыром. Картофджын.</p>
+             <span>
+              <img class="delete-product-button" src="assets/images/times.png" alt="delete product button">
+            </span>
           </div>
-          <button class="show-more">Показать еще</button>
-        </div>
-      </div>
-      <div class="leave-a-feedback">
-        <div class="leave-a-feedback__title">Оставить отзыв</div>
-        <form class="leave-a-feedback__form">
-          <input type="text" placeholder="Имя" />
-          <p>Оценка: 4.7<span>/5</span></p>
-          <textarea id="" placeholder="Отзыв"></textarea>
-          <button class="send-feedback">Отправить</button>
-        </form>
-      </div>
-      <div class="recomended-products">
-        <p class="recomended-products__title">
-          Покупатели, которые приобрели Осетинский пирог с сыром. Уалибах, также
-          купили:
-        </p>
-        <div class="recomended-products-content">
-          <div class="product-card">
-            <a href="product.html"><img src="assets/images/index/special-offer-product.png" alt="" /></a>
-            <div class="card-content">
-              <div class="card-title"><a href="product.html">Осетинский пирог с сыром. Уалибах</a></div>
-              <div class="card-price">
-                <p>979₽</p>
-                <button>В корзину</button>
-              </div>
-              <div class="card-rating">
-                <img src="assets/images/rating-star.png" alt="" />
-                <img src="assets/images/rating-star.png" alt="" />
-                <img src="assets/images/rating-star.png" alt="" />
-                <img src="assets/images/rating-star.png" alt="" />
-                <img src="assets/images/rating-star.png" alt="" />
-              </div>
-            </div>
+          <div class="item-count">
+            <input type="number" value="1"><p>шт.</p>
           </div>
+          <p class="item-price">1020<span>₽</span></p>
         </div>
       </div>
     </div>
-    <footer>
-      <div class="footer-content">
-        <p>© 2024 ПиццаТорг</p>
-      </div>
-    </footer>
-  </body>
-  <script src="assets/js/scrollToTop.js"></script>
-  <script src="assets/js/header.js"></script>
-  <script src="assets/js/inputValidation.js"></script>
+    <div class="total-sum">
+      <p>Итого: <span id="sum"></span>₽</p>
+      <a href="order-form.html"><button>Оформить заказ</button></a>
+    </div>
+  </div>
+</body>
+<script src="assets/js/header.js"></script>
+<script src="assets/js/scrollToTop.js"></script>
+<script src="assets/js/inputValidation.js"></script>
+<script src="assets/js/cart/deleteProduct.js"></script>
+<script src="assets/js/cart/countTotalSum.js"></script>
+<script src="assets/js/cart/countProductSum.js"></script>
 </html>

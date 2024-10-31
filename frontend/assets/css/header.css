@@ -22,6 +22,7 @@
 
 .logo div:first-child {
   display: flex;
+  align-items: center;
   column-gap: 5px;
 }
 
@@ -189,6 +190,11 @@ li:hover .menu-item__extended {
   align-items: center;
   column-gap: 5px;
   cursor: pointer;
+}
+
+.cart a {
+  color: white;
+  text-decoration: none;
 }
 
 .show-more__menu {
