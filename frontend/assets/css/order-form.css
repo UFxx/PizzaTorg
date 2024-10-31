@@ -22,14 +22,28 @@
   border-radius: 5px;
 }
 
-.order__form input::placeholder {
+.order__form input::placeholder,
+.order__form textarea::placeholder {
   color: black;
   transition: 0.3s ease transform, 0.3s ease opacity;
 }
 
-.order__form input:focus::placeholder {
+.order__form input:focus::placeholder,
+.order__form textarea:focus::placeholder {
   transform: translateX(10px);
   opacity: 0;
+}
+
+.order__form textarea {
+  resize: none;
+  width: 300px;
+  height: 100px;
+  background-color: #d9d9d9;
+  color: black;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 5px;
+  overflow: hidden;
 }
 
 .order__form p {
@@ -68,7 +82,7 @@ table td {
 
 .order-result button {
   padding: 5px;
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: transparent;
   border: 2px solid black;
   font-size: 18px;
@@ -152,6 +166,15 @@ table td {
 @media (max-width: 376px) {
   tr td:first-child {
     width: 150px;
+  }
+
+  .order-content {
+    padding-left: 0;
+  }
+
+  .order__form textarea {
+    font-size: 18px;
+    width: 250px;
   }
 
   .order-result p,
