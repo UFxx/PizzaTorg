@@ -114,7 +114,8 @@
   border-radius: 5px;
   margin-top: 50px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
 }
 
 .benefit-title {
@@ -125,7 +126,7 @@
 
 .benefit-description {
   font-size: 20px;
-  width: 410px;
+  width: 400px;
   margin-top: 15px;
 }
 
@@ -135,4 +136,66 @@
 
 .about-site p {
   font-size: 20px;
+}
+
+@media (max-width: 1500px) {
+  .container {
+    padding: 40px 120px 0 120px;
+  }
+
+  .our-benefits {
+    flex-wrap: wrap;
+  }
+
+  .benefit-title {
+    font-size: 20px;
+  }
+
+  .benefit-description {
+    font-size: 18px;
+    width: 300px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .container {
+    padding: 40px 60px 0 60px;
+  }
+}
+
+@media (max-width: 1160px) {
+  .promotions {
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 775px) {
+  .special-offer-content {
+    justify-content: center;
+  }
+
+  .our-benefits {
+    flex-direction: column;
+    row-gap: 30px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 458px) {
+  .benefit-description {
+    width: 250px;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    padding: 40px 20px 0 20px;
+  }
+
+  .our-benefits .benefit:nth-child(2) .benefit-title img {
+    width: 25px;
+    height: 20px;
+  }
 }
