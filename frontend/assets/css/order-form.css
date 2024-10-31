@@ -1,0 +1,161 @@
+.title {
+  font-size: 32px;
+}
+
+.order-content {
+  padding: 20px;
+}
+
+.order__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.order__form input {
+  width: 250px;
+  padding: 5px;
+  font-size: 20px;
+  border: none;
+  background-color: #d9d9d9;
+  color: black;
+  border-radius: 5px;
+}
+
+.order__form input::placeholder {
+  color: black;
+  transition: 0.3s ease transform, 0.3s ease opacity;
+}
+
+.order__form input:focus::placeholder {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.order__form p {
+  margin-left: 15px;
+}
+
+.order-detail-content {
+  margin-left: 15px;
+  margin-top: 30px;
+}
+
+table {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px 0;
+}
+
+table th {
+  text-align: left;
+  font-size: 22px;
+}
+
+table td {
+  font-size: 18px;
+}
+
+.order-result {
+  text-align: right;
+  margin-right: 53px;
+}
+
+.order-result p {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+.order-result button {
+  padding: 5px;
+  border-radius: 20px;
+  background-color: transparent;
+  border: 2px solid black;
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s ease background-color;
+}
+
+.order-result button:hover {
+  background-color: #87dd555d;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 40px 120px 0 120px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 40px 60px 0 60px;
+  }
+}
+
+@media (max-width: 765px) {
+  .order-result {
+    margin-right: 10px;
+  }
+
+  .container {
+    padding: 40px 30px 0 30px;
+  }
+}
+
+@media (max-width: 700px) {
+  tr td:first-child {
+    display: block;
+    width: 300px;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    padding: 20px 30px 0 30px;
+  }
+
+  table {
+    padding: 5px 0;
+    margin-top: 5px;
+  }
+
+  tr th {
+    font-size: 20px;
+  }
+
+  tr td {
+    font-size: 16px;
+  }
+
+  tr td:first-child {
+    width: 250px;
+  }
+}
+
+@media (max-width: 485px) {
+  tr td:first-child {
+    width: 200px;
+  }
+}
+
+@media (max-width: 450px) {
+  tr td {
+    font-size: 14px;
+  }
+
+  tr th {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 376px) {
+  tr td:first-child {
+    width: 150px;
+  }
+
+  .order-result p,
+  .order-result button {
+    font-size: 16px;
+  }
+}
