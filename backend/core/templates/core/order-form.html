@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,10 +21,11 @@
    />
 
    <!-- CSS -->
-   <link rel="stylesheet" href="assets/css/base.css" />
-   <link rel="stylesheet" href="assets/css/header.css" />
-   <link rel="stylesheet" href="assets/css/footer.css" />
-   <link rel="stylesheet" href="assets/css/order-form.css" />
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/order_form.css' %}" />
+
     
     <title>Заказ</title>
   </head>
@@ -214,9 +216,9 @@
     </div>
   </div>
 </body>
-<script src="assets/js/header.js"></script>
-<script src="assets/js/scrollToTop.js"></script>
-<script src="assets/js/order/orderResult.js"></script>
-<script src="assets/js/order/calculateItemsSum.js"></script>
-<script src="assets/js/order/formInputValidation.js"></script>
+<script src="{% static 'core/js/scrollToTop.js' %}"></script>
+  <script src="{% static 'core/js/header.js' %}"></script>
+<script src="{% static 'core/js/order/orderResult.js' %}"></script>
+<script src="{% static 'core/js/order/calculateItemsSum.js' %}"></script>
+<script src="{% static 'core/js/order/formInputValidation.js' %}"></script>
 </html>

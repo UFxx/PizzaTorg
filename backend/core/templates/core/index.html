@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,7 +16,7 @@
     <!-- Favicon -->
     <link
       rel="shortcut icon"
-      href="assets/images/favicon.ico"
+      href="{% static 'core/images/favicon.ico' %}"
       type="image/x-icon"
     />
 
@@ -28,10 +29,10 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="assets/css/header.css" />
-    <link rel="stylesheet" href="assets/css/footer.css" />
-    <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/header.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}" />
 
     <title>ПиццаТорг</title>
   </head>
@@ -58,7 +59,7 @@
               <a href="category.html" class="category-link"
                 >Осетинские пироги
                 <span
-                  ><img src="assets/images/index/arrow-down.png" alt=""
+                  ><img src="{% static 'core/images/index/arrow-down.png' %}" alt=""
                 /></span>
                 <ul class="menu-item__extended">
                   <li>
@@ -84,7 +85,7 @@
               <a class="category-link" href="category.html"
                 >Пицца
                 <span
-                  ><img src="assets/images/index/arrow-down.png" alt="arrow down"
+                  ><img src="{% static 'core/images/index/arrow-down.png' %}" alt="arrow down"
                 /></span>
               </a>
             </li>
@@ -112,7 +113,7 @@
             <li>
               <p class="mobile-menu-category-link"
                 >Осетинские пироги<span
-                  ><img src="assets/images/index/arrow-down.png" alt=""
+                  ><img src="{% static 'core/images/index/arrow-down.png' %}" alt=""
                 /></span>
                 <div class="mobile-menu__extended">
                   <ul>
@@ -130,7 +131,7 @@
               <li>
               <p class="mobile-menu-category-link"
                 >Пицца<span
-                  ><img src="assets/images/index/arrow-down.png" alt=""
+                  ><img src="{% static 'core/images/index/arrow-down.png' %}" alt=""
                 /></span>
                 <div class="mobile-menu__extended">
                   <ul>
@@ -169,12 +170,12 @@
           <div class="search">
             <input type="search" placeholder="Поиск товара" />
             <div class="search-button">
-              <img src="assets/images/search-button.png" alt="search button" />
+              <img src="{% static 'core/images/search-button.png' %}" alt="search button" />
             </div>
           </div>
           <div class="cart">
             <a href="cart.html" class="cart-icon">
-              <img src="assets/images/cart.png" alt="" />
+              <img src="{% static 'core/images/cart.png' %}" alt="" />
             </a>
             <a href="cart.html">0₽</a>
           </div>
@@ -306,7 +307,7 @@
       <div class="our-benefits">
         <div class="benefit">
           <div class="benefit-title">
-            <img src="assets/images/index/benefit-delivery-icon.png" alt="" />
+            <img src="{% static 'core/images/index/benefit-delivery-icon.png' %}" alt="" />
             <p class="benefit-name">Доставка в Москве</p>
           </div>
           <p class="benefit-description">
@@ -315,7 +316,7 @@
         </div>
         <div class="benefit">
           <div class="benefit-title">
-            <img src="assets/images/index/benefit-coupon-icon.png" alt="" />
+            <img src="{% static 'core/images/index/benefit-coupon-icon.png' %}" alt="" />
             <p class="benefit-name">Получи купон на скидку!</p>
           </div>
           <p class="benefit-description">
@@ -325,7 +326,7 @@
         </div>
         <div class="benefit">
           <div class="benefit-title">
-            <img src="assets/images/index/benefit-bakery-icon.png" alt="" />
+            <img src="{% static 'core/images/index/benefit-bakery-icon.png' %}" alt="" />
             <p class="benefit-name">Пекарня в Москве</p>
           </div>
           <p class="benefit-description">
@@ -379,6 +380,6 @@
       </div>
     </footer>
   </body>
-  <script src="assets/js/scrollToTop.js"></script>
-  <script src="assets/js/header.js"></script>
+  <script src="{% static 'core/js/scrollToTop.js' %}"></script>
+  <script src="{% static 'core/js/header.js' %}"></script>
 </html>
