@@ -13,3 +13,15 @@ inputs.forEach((input) => {
     }
   });
 });
+
+const feedbackRatingInput = document.querySelector('#feedback-rating-input');
+
+feedbackRatingInput.addEventListener('input', () => {
+  const value = feedbackRatingInput.value;
+
+  if (value < 1) {
+    feedbackRatingInput.value = 1;
+  } else if (value > 5) {
+    feedbackRatingInput.value = 5;
+  }
+});

@@ -166,6 +166,16 @@
   width: 250px;
 }
 
+#feedback-rating-input {
+  width: 40px;
+  padding: 0;
+  text-align: center;
+}
+
+#feedback-rating-input::-webkit-inner-spin-button {
+  display: none;
+}
+
 .leave-a-feedback__form textarea {
   padding: 10px 10px 10px 10px;
   width: 600px;
