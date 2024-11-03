@@ -1,0 +1,11 @@
+// Common
+@use './assets/scss/commmon/base';
+
+// Components
+@use './assets/scss/components/Header';
+@use './assets/scss/components/Main';
+@use './assets/scss/components/Category';
+@use './assets/scss/components/Product';
+@use './assets/scss/components/Cart';
+@use './assets/scss/components/OrderForm';
+@use './assets/scss/components/Footer';
