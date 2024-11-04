@@ -6,10 +6,9 @@ import deliveryIcon from '../../assets/images/index/benefit-delivery-icon.png';
 import couponIcon from '../../assets/images/index/benefit-coupon-icon.png';
 import bakeryIcon from '../../assets/images/index/benefit-bakery-icon.png';
 
-function Main() {
+function Main({ order, setOrder }) {
   return (
     <>
-      {' '}
       <div className="container">
         <div className="promotions">
           <div className="promotion">
@@ -38,16 +37,22 @@ function Main() {
               productName="Осетинский пирог с сыром. Уалибах"
               productPrice="979"
               productRating={3}
+              order={order}
+              setOrder={setOrder}
             />
             <SpecialOfferCard
               productName="Осетинский пирог с сыром. Уалибах"
               productPrice="979"
               productRating={3}
+              order={order}
+              setOrder={setOrder}
             />
             <SpecialOfferCard
               productName="Осетинский пирог с сыром. Уалибах"
               productPrice="979"
               productRating={3}
+              order={order}
+              setOrder={setOrder}
             />
           </div>
         </div>

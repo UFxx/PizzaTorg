@@ -5,8 +5,25 @@ import HeaderMobile from './HeaderMobile';
 import arrowDownIcon from '../../assets/images/index/arrow-down.png';
 import searchIcon from '../../assets/images/search-button.png';
 import cartIcon from '../../assets/images/cart.png';
+import { useEffect } from 'react';
 
-function Header() {
+function Header({ order }) {
+  let sum = 0;
+
+  function calculateTotalCartPrice() {
+    if (order) {
+      order.forEach((orderItem) => {
+        sum += parseInt(orderItem.price);
+      });
+    }
+
+    return sum;
+  }
+
+  useEffect(() => {
+    calculateTotalCartPrice();
+  });
+
   return (
     <>
       <header>
@@ -102,7 +119,7 @@ function Header() {
               <Link to="/cart" className="cart-icon">
                 <img src={cartIcon} alt="" />
               </Link>
-              <Link to="/cart">0₽</Link>
+              <Link to="/cart">{calculateTotalCartPrice()}₽</Link>
             </div>
           </div>
         </div>
