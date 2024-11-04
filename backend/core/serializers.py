@@ -1,30 +1,49 @@
 from rest_framework import serializers
 from .models import *
 
-class CategorySerializer(serializers.ModelSerializer):
+
+class NestedCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ('id', 'name')
+
+class CategoryDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('id', 'name', 'description')
+
+class CategorySerializer(serializers.ModelSerializer):
+    nested_categories = NestedCategorySerializer(many=True, read_only=True)
+    class Meta:
+        model = Category
+        fields = ('id', 'name', 'main_category', 'nested_categories')
 
 class ProductCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ('id', 'name','image', 'price', 'get_rating')
 
-
-class ProductDetailSerializer(serializers.ModelSerializer):
-    category = serializers.SlugRelatedField('name', read_only=True)
-    get_similar_products = ProductCardSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Product
-        fields = ('id', 'name', 'image', 'price', 'get_rating', 'description', 'category', 'get_similar_products')
-
+class IngredientSerializer(serializers.ModelSerializer):
+    model = Ingredient
+    fields = '__all__'
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
+
+class ProductDetailSerializer(serializers.ModelSerializer):
+    category = serializers.SlugRelatedField('name', read_only=True)
+    get_similar_products = ProductCardSerializer(many=True, read_only=True)
+    ingredients = IngredientSerializer(many=True, read_only=True)
+
+
+    class Meta:
+        model = Product
+        fields = ('id', 'name', 'image', 'price', 'get_rating', 'ingredients', 'size', 'weight', 'description', 'category', 'get_similar_products')
+
+
+
 
 
 class OrderPointSerializer(serializers.ModelSerializer):

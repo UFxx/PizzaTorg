@@ -1,3 +1,6 @@
+from itertools import product
+from tkinter.messagebox import YESNO
+
 from django.db import models
 
 from sortedm2m.fields import SortedManyToManyField
@@ -7,6 +10,9 @@ from sortedm2m.fields import SortedManyToManyField
 
 class Category(models.Model):
     name = models.CharField(max_length=250, verbose_name='Категория', unique=True)
+    description = models.TextField(verbose_name='Описание', blank=True, null=True)
+    main_category = models.BooleanField(default=False, verbose_name='Основная категория')
+    nested_categories = SortedManyToManyField('Category', blank=True, verbose_name='Дочерние категории' )
 
     class Meta:
         verbose_name = 'Категория'
@@ -14,14 +20,27 @@ class Category(models.Model):
         ordering = ('name',)
 
     def __str__(self):
+
         return self.name
 
+class Ingredient(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Ингридиент', unique=True)
+
+    class Meta:
+        verbose_name = 'Ингридиент'
+        verbose_name_plural = 'Ингридиенты'
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
     name = models.CharField(max_length=250, verbose_name='Название', unique=True)
     image = models.ImageField(upload_to='images', verbose_name='Картинка', blank=True, null=True)
     description = models.TextField(verbose_name='Описание', blank=True, null=True)
+    ingredients = SortedManyToManyField(Ingredient, blank=True, verbose_name='Ингридиенты')
+    size = models.PositiveIntegerField(verbose_name='Размер', blank=True, null=True)
+    weight = models.PositiveIntegerField(verbose_name='Размер', blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, verbose_name='Категория',  blank=True, null=True)
     start_price = models.PositiveIntegerField(verbose_name='Начальная цена')
     discount = models.DecimalField(verbose_name='Скидка', max_digits=5, decimal_places=2,
@@ -41,6 +60,11 @@ class Product(models.Model):
 
     def get_similar_products(self):
         if self.category:
+            if self.category.main_category:
+                categories = [category.pk for category in self.category.nested_categories.all().prefetch_related('nested_categories')]
+                categories.append(self.category.pk)
+                return Product.objects.filter(category__in=categories).exclude(id=self.pk)[:10]
+
             return Product.objects.filter(category=self.category).exclude(id=self.pk)[:10]
         return Product.objects.all().exclude(id=self.pk)[:10]
 
