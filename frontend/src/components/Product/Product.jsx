@@ -4,12 +4,12 @@ import FeedbackItem from './Feedback/FeedbackItem';
 import LeaveFeedbackForm from './Feedback/LeaveFeedbackForm';
 import RecomendedProduct from './Recomendations/RecomendedProduct';
 
-function Product() {
+function Product({ order, setOrder }) {
   return (
     <>
       <div class="container">
-        <div class="product-title">Осетинский пирог с сыром. Уалибах</div>
         <ProductContent
+          productName="Осетинский пирог с сыром. Уалибах"
           isAvailable={true}
           price={979}
           size={36}
@@ -17,6 +17,8 @@ function Product() {
           weight={1000}
           averageScore={4.7}
           ratingScore={4}
+          order={order}
+          setOrder={setOrder}
         />
         <div class="product-description">
           <div class="product-description-title">

@@ -6,16 +6,41 @@ import Product from './components/Product/Product';
 import Cart from './components/Cart/Cart';
 import OrderForm from './components/OrderForm/OrderForm';
 import Footer from './components/Footer/Footer';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [order, setOrder] = useState();
+
+  useEffect(() => {
+    if (localStorage.getItem('order') === null) {
+      localStorage.setItem('order', JSON.stringify([]));
+      setOrder(localStorage.setItem('order'));
+    } else {
+      setOrder(JSON.parse(localStorage.getItem('order')));
+    }
+  }, []);
+
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header order={order} />
         <Routes>
-          <Route path="/index" element={<Main />} />
-          <Route path="/category" element={<Category />} />
-          <Route path="/product" element={<Product />} />
+          <Route
+            path="/"
+            element={<Main order={order} setOrder={setOrder} />}
+          />
+          <Route
+            path="/index"
+            element={<Main order={order} setOrder={setOrder} />}
+          />
+          <Route
+            path="/category"
+            element={<Category order={order} setOrder={setOrder} />}
+          />
+          <Route
+            path="/product"
+            element={<Product order={order} setOrder={setOrder} />}
+          />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order-form" element={<OrderForm />} />
         </Routes>

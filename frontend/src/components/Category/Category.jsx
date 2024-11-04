@@ -1,6 +1,6 @@
 import ProductCard from './ProductCard';
 
-function Category() {
+function Category({ order, setOrder }) {
   return (
     <>
       <div className="container">
@@ -21,16 +21,22 @@ function Category() {
             productName="Осетинский пирог с сыром. Уалибах"
             productPrice="979"
             productRating={4}
+            order={order}
+            setOrder={setOrder}
           />
           <ProductCard
             productName="Осетинский пирог с сыром. Уалибах"
             productPrice="979"
             productRating={4}
+            order={order}
+            setOrder={setOrder}
           />
           <ProductCard
             productName="Осетинский пирог с сыром. Уалибах"
             productPrice="979"
             productRating={4}
+            order={order}
+            setOrder={setOrder}
           />
           <ProductCard
             productName="Осетинский пирог с сыром. Уалибах"
