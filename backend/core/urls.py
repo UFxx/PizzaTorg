@@ -18,5 +18,7 @@ urlpatterns = [
     path('api-product_detail/<int:id>/', ProductRetrieveView.as_view(), name='api-product_detail'),
     path('api-comment_list/<int:prod_id>', CommentListView.as_view(), name='api-comment_list'),
     path('api-new_order/', OrderCreateView.as_view(), name='api-new_order'),
+    path('api-new_comment/', CommentCreateView.as_view(), name='api-new_comment')
+
 
 ]
