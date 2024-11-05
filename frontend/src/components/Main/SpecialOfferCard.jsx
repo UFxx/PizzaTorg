@@ -11,7 +11,7 @@ function SpecialOfferCard({
 }) {
   const rating = [];
   for (let i = 0; i < productRating; i++) {
-    rating.push(<ProductRating />);
+    rating.push(<ProductRating key={i} />);
   }
 
   function addObject() {

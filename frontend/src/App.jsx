@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
+import SearchPage from './components/SearchPage/SearchPage';
 import Main from './components/Main/Main';
 import Category from './components/Category/Category';
 import Product from './components/Product/Product';
@@ -43,6 +44,10 @@ function App() {
           />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order-form" element={<OrderForm />} />
+          <Route
+            path="/search"
+            element={<SearchPage order={order} setOrder={setOrder} />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

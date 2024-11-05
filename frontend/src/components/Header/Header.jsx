@@ -4,8 +4,8 @@ import axios from 'axios';
 
 import HeaderMobile from './HeaderMobile';
 import MainMenuItem from './MainMenuItem';
+import Search from './Search';
 
-import searchIcon from '../../assets/images/search-button.png';
 import cartIcon from '../../assets/images/cart.png';
 
 function Header({ order }) {
@@ -64,12 +64,7 @@ function Header({ order }) {
           </nav>
           <HeaderMobile data={data} />
           <div className="right-menu">
-            <div className="search">
-              <input type="search" placeholder="Поиск товара" />
-              <div className="search-button">
-                <img src={searchIcon} alt="search button" />
-              </div>
-            </div>
+            <Search />
             <div className="cart">
               <Link to="/cart" className="cart-icon">
                 <img src={cartIcon} alt="" />
