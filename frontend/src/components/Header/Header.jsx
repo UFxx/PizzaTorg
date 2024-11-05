@@ -16,7 +16,7 @@ function Header({ order }) {
   function calculateTotalCartPrice() {
     if (order) {
       order.forEach((orderItem) => {
-        sum += parseInt(orderItem.price);
+        sum += parseInt(orderItem.price) * orderItem.amount;
       });
     }
 

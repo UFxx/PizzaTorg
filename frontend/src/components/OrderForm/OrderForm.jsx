@@ -1,13 +1,18 @@
 import axios from 'axios';
-import { useState } from 'react';
 
 import OrderItem from './OrderItem';
 import OrderResult from './OrderResult';
+import { useEffect, useState } from 'react';
 
-function OrderForm() {
-  const [summary, setSummary] = useState(0);
+function OrderForm({ order }) {
+  function calculateSummary() {
+    let summary = 0;
+    order?.forEach((el) => {
+      summary += el.price * el.amount;
+    });
 
-  const order = JSON.parse(localStorage.getItem('order'));
+    return summary;
+  }
 
   function newOrder(button) {
     const form =
@@ -33,10 +38,10 @@ function OrderForm() {
 
   return (
     <>
-      <div class="container">
-        <p class="title">Заказ</p>
-        <div class="order-content">
-          <form action="" class="order__form">
+      <div className="container">
+        <p className="title">Заказ</p>
+        <div className="order-content">
+          <form action="" className="order__form">
             <input type="text" name="" placeholder="Имя" required />
             <input type="tel" name="" placeholder="Телефон" required />
             <p>Улица, дом, квартира</p>
@@ -44,15 +49,15 @@ function OrderForm() {
             <textarea placeholder="Комментарий к заказу"></textarea>
           </form>
         </div>
-        <div class="order-detail">
-          <p class="title">Детали заказа</p>
+        <div className="order-detail">
+          <p className="title">Детали заказа</p>
           <table>
             <tr>
               <th>Название</th>
               <th>Количество</th>
               <th>Итого</th>
             </tr>
-            {order.map((orderItem) => {
+            {order?.map((orderItem) => {
               return (
                 <OrderItem
                   key={orderItem.id}
@@ -65,9 +70,9 @@ function OrderForm() {
             })}
           </table>
           <hr />
-          <div class="order-result">
+          <div className="order-result">
             <OrderResult
-              summary={summary}
+              summary={calculateSummary()}
               discount={0}
               delivery={0}
               newOrder={newOrder}

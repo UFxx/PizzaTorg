@@ -43,7 +43,7 @@ function App() {
             element={<Product order={order} setOrder={setOrder} />}
           />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/order-form" element={<OrderForm />} />
+          <Route path="/order-form" element={<OrderForm order={order} />} />
           <Route
             path="/search"
             element={<SearchPage order={order} setOrder={setOrder} />}

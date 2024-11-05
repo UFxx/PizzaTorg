@@ -14,6 +14,11 @@ function HeaderMobileItem({ id, itemName, nestedCategories }) {
     item.lastChild.style.display = 'flex';
   }
 
+  function refreshPage() {
+    setTimeout(() => {
+      window.location.href = new URL(window.location);
+    }, 0);
+  }
   return (
     <>
       <li onClick={(e) => openMenuItem(e.target)}>
@@ -24,10 +29,20 @@ function HeaderMobileItem({ id, itemName, nestedCategories }) {
           </span>
           <div className="mobile-menu__extended">
             <ul>
+              <li>
+                <Link to={`/category?id=${id}`} onClick={refreshPage}>
+                  {itemName}
+                </Link>
+              </li>
               {nestedCategories?.map((categorie) => {
                 return (
                   <li key={categorie.id}>
-                    <Link to="/category">{categorie.name}</Link>
+                    <Link
+                      to={`/category?id=${categorie.id}`}
+                      onClick={refreshPage}
+                    >
+                      {categorie.name}
+                    </Link>
                   </li>
                 );
               })}

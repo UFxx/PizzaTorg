@@ -9,7 +9,10 @@ function Cart() {
   useEffect(() => {
     const elements = Array.from(document.getElementsByClassName('item-price'));
     const total = elements.reduce(
-      (acc, element) => acc + Number(element.innerText.split('₽')[0]),
+      (acc, element) =>
+        acc +
+        Number(element.innerText.split('₽')[0]) *
+          element.previousElementSibling.children[0].value,
       0
     );
     setTotal(total);
@@ -19,7 +22,10 @@ function Cart() {
         document.getElementsByClassName('item-price')
       );
       const total = elements.reduce(
-        (acc, element) => acc + Number(element.innerText.split('₽')[0]),
+        (acc, element) =>
+          acc +
+          Number(element.innerText.split('₽')[0]) *
+            element.previousElementSibling.children[0].value,
         0
       );
       setTotal(total);

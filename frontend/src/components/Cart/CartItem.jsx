@@ -55,8 +55,7 @@ function CartItem({ id, name, price, img, amount }) {
             <p>шт.</p>
           </div>
           <p className="item-price">
-            {price}
-            <span>₽</span>
+            {price}₽ x {amount} = {price * amount}
           </p>
         </div>
       </div>

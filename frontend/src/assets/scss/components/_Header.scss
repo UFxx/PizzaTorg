@@ -64,6 +64,11 @@ nav ul li {
 .category-link {
   color: white;
   font-size: 18px;
+  cursor: pointer;
+}
+
+.category-link img {
+  margin-left: 5px;
 }
 
 .category-link:before {
