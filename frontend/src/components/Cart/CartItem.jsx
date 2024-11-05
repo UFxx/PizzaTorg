@@ -1,11 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import timesIcon from '../../assets/images/times.png';
 
-function CartItem({ name, price, img }) {
+function CartItem({ id, name, price, img, amount }) {
   const [productPrice, setProductPrice] = useState(price);
 
   function deleteItem(button) {
     button.closest('.cart-item').remove();
+
+    const order = JSON.parse(localStorage.getItem('order'));
+    const newOrder = order.filter((item) => item.id !== id);
+
+    localStorage.setItem('order', JSON.stringify(newOrder));
   }
 
   function calculateProductPrice(input) {
@@ -42,7 +47,7 @@ function CartItem({ name, price, img }) {
           <div className="item-count">
             <input
               type="number"
-              defaultValue={1}
+              defaultValue={amount}
               min={1}
               max={99}
               onInput={(e) => calculateProductPrice(e.target)}

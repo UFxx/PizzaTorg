@@ -1,18 +1,42 @@
 import FeedbackRating from './FeebackRating';
 
-function FeedbackItem({ username, date, text, ratingScore }) {
+function FeedbackItem({ username, commentDate, text, ratingScore }) {
   const rating = [];
   for (let i = 0; i < ratingScore; i++) {
-    rating.push(<FeedbackRating />);
+    rating.push(<FeedbackRating key={i} />);
   }
+  const date = new Date(commentDate);
+
+  let months = [
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря'
+  ];
+
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+  const year = date.getFullYear();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
 
   return (
     <>
-      <div class="feedback-item">
-        <p class="feedback-username">{username}</p>
-        <p class="feedback-date">{date}</p>
-        <p class="feedback-text">{text}</p>
-        <p class="feedback-rating">{rating}</p>
+      <div className="feedback-item">
+        <p className="feedback-username">{username}</p>
+        <p className="feedback-date">{`${day} ${month} ${year} ${hours}:${
+          minutes < 10 ? '0' + minutes : minutes
+        }`}</p>
+        <p className="feedback-text">{text}</p>
+        <p className="feedback-rating">{rating}</p>
       </div>
     </>
   );

@@ -1,48 +1,43 @@
+import { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
+import axios from 'axios';
 
 function Category({ order, setOrder }) {
+  const [data, setData] = useState();
+  const [categoryProducts, setCategoryProducts] = useState();
+
+  const categoryId = new URL(document.location).searchParams.get('id');
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api-category_detail/${categoryId}/`)
+      .then((data) => setData(data.data));
+
+    axios
+      .get(`http://localhost:8000/api-product_cards_list/${categoryId}/`)
+      .then((data) => setCategoryProducts(data.data.products));
+  }, []);
+
   return (
     <>
       <div className="container">
-        <p className="category-name">Осетинские пироги</p>
-        <p className="category-description">
-          Мы понимаем, как важно сытно и вкусно перекусить, особенно если вы
-          ждете гостей или ограничены во времени. Быстро доставляем осетинские
-          пироги в Кузьминки, Жулебино, Люблино, Братиславская, Марьино,
-          Дубровка, Кожуховская, Котельники, Орехово, Домодедовская, Таганская и
-          любые другие районы Москвы. Угощайте друзей и кушайте сами, берите с
-          собой на пикник и в дорогу осетинские пироги. Вкусные, горячие, сочные
-          осетинские пироги с доставкой в Москве - это домашняя кухня в лучших
-          осетинских традициях. Попробуйте приготовленные пироги нашими
-          поварами!
-        </p>
+        <p className="category-name">{data?.name}</p>
+        <p className="category-description">{data?.description}</p>
         <div className="products">
-          <ProductCard
-            productName="Осетинский пирог с сыром. Уалибах"
-            productPrice="979"
-            productRating={4}
-            order={order}
-            setOrder={setOrder}
-          />
-          <ProductCard
-            productName="Осетинский пирог с сыром. Уалибах"
-            productPrice="979"
-            productRating={4}
-            order={order}
-            setOrder={setOrder}
-          />
-          <ProductCard
-            productName="Осетинский пирог с сыром. Уалибах"
-            productPrice="979"
-            productRating={4}
-            order={order}
-            setOrder={setOrder}
-          />
-          <ProductCard
-            productName="Осетинский пирог с сыром. Уалибах"
-            productPrice="979"
-            productRating={4}
-          />
+          {categoryProducts?.map((product) => {
+            return (
+              <ProductCard
+                key={product.id}
+                id={product.id}
+                productName={product.name}
+                productPrice={product.price}
+                productRating={product.get_rating}
+                productImage={product.image}
+                order={order}
+                setOrder={setOrder}
+              />
+            );
+          })}
         </div>
       </div>
     </>

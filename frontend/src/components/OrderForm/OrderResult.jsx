@@ -1,4 +1,4 @@
-function OrderResult({ summary, discount, delivery, total }) {
+function OrderResult({ summary, discount, delivery, newOrder }) {
   return (
     <>
       <p>
@@ -13,7 +13,7 @@ function OrderResult({ summary, discount, delivery, total }) {
       <p>
         Итого: <span class="result">{summary - discount + delivery}</span>₽
       </p>
-      <button>Заказать</button>
+      <button onClick={(e) => newOrder(e.target)}>Заказать</button>
     </>
   );
 }

@@ -74,7 +74,7 @@ class CommentListView(ListAPIView):
     serializer_class = CommentSerializer
 
     def get_queryset(self):
-        return self.queryset.filter(category=self.kwargs['prod_id'])
+        return self.queryset.filter(product=self.kwargs['prod_id'])
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
