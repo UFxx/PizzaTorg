@@ -10,16 +10,14 @@ import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [order, setOrder] = useState();
+  const [order, setOrder] = useState(() => {
+    const savedOrder = localStorage.getItem('order');
+    return savedOrder ? JSON.parse(savedOrder) : [];
+  });
 
   useEffect(() => {
-    if (localStorage.getItem('order') === null) {
-      localStorage.setItem('order', JSON.stringify([]));
-      setOrder(localStorage.setItem('order'));
-    } else {
-      setOrder(JSON.parse(localStorage.getItem('order')));
-    }
-  }, []);
+    localStorage.setItem('order', JSON.stringify(order));
+  }, [order]);
 
   return (
     <>
