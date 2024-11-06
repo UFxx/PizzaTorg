@@ -67,7 +67,9 @@ function Cart({ order, setOrder }) {
             Итого: <span id="sum">{total}</span>₽
           </p>
           <a href="/order-form">
-            <button>Оформить заказ</button>
+            <button disabled={order.length > 0 ? false : true}>
+              Оформить заказ
+            </button>
           </a>
         </div>
       </div>
