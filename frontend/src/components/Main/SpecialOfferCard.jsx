@@ -1,4 +1,4 @@
-import ProductRating from './ProductRating.jsx';
+import ProductRating from '../ProductRating/ProductRating';
 
 import productPhoto from '../../assets/images/index/special-offer-product.png';
 

@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import timesIcon from '../../assets/images/times.png';
 
 function CartItem({ id, name, price, img, amount, order, setOrder }) {
-  const [productPrice, setProductPrice] = useState(price);
-
   function deleteItem(button) {
     button.closest('.cart-item').remove();
 
     const newOrder = order.filter((item) => item.id !== id);
 
     localStorage.setItem('order', JSON.stringify(newOrder));
+
+    window.location.href = new URL(window.location);
   }
 
   function calculateProductPrice(input) {
@@ -28,11 +28,9 @@ function CartItem({ id, name, price, img, amount, order, setOrder }) {
       localStorage.setItem('order', JSON.stringify(order));
     }
 
-    input.parentElement.nextElementSibling.textContent = `${productPrice}₽ x ${value
+    input.parentElement.nextElementSibling.textContent = `${price}₽ x ${value
       .replace('-', '')
-      .replace('+', '')} = ${
-      value.replace('-', '').replace('+', '') * productPrice
-    }₽`;
+      .replace('+', '')} = ${value.replace('-', '').replace('+', '') * price}₽`;
   }
 
   function validateInput(input) {
@@ -49,7 +47,9 @@ function CartItem({ id, name, price, img, amount, order, setOrder }) {
     <>
       <div className="cart-item">
         <div className="item-img">
-          <img src={img} alt="" />
+          <Link to={`/product?id=${id}`}>
+            <img src={img} alt="" />
+          </Link>
         </div>
         <div className="cart-item-info">
           <div className="item-title">

@@ -11,21 +11,17 @@ import cartIcon from '../../assets/images/cart.png';
 function Header({ order }) {
   const [data, setData] = useState();
 
-  let sum = 0;
-
   function calculateTotalCartPrice() {
-    if (order) {
-      order.forEach((orderItem) => {
-        sum += parseInt(orderItem.price) * orderItem.amount;
-      });
-    }
+    let sum = 0;
+
+    order?.forEach((orderItem) => {
+      sum += parseInt(orderItem.price) * orderItem.amount;
+    });
 
     return sum;
   }
 
   useEffect(() => {
-    calculateTotalCartPrice();
-
     axios
       .get('http://localhost:8000/api-category/')
       .then((data) => setData(data.data.categories));

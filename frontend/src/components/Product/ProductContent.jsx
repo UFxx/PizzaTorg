@@ -1,4 +1,5 @@
-import ProductRating from './ProductRating';
+import { useEffect, useState } from 'react';
+import ProductRating from '../ProductRating/ProductRating';
 
 function ProductContent({
   id,
@@ -13,6 +14,16 @@ function ProductContent({
   order,
   setOrder
 }) {
+  const [inCart, setInCart] = useState(false);
+
+  useEffect(() => {
+    order.forEach((orderItem) => {
+      if (Number(orderItem.id) === Number(id)) {
+        setInCart(true);
+      }
+    });
+  }, [order, inCart]);
+
   const rating = [];
   for (let i = 0; i < ratingScore; i++) {
     rating.push(<ProductRating key={i} />);
@@ -33,6 +44,14 @@ function ProductContent({
     localStorage.setItem('order', JSON.stringify(order));
   }
 
+  function validateInput(input) {
+    if (input.value < 1) {
+      input.value = 1;
+    } else if (input.value > 99) {
+      input.value = 99;
+    }
+  }
+
   return (
     <>
       <div className="product-title">{productName}</div>
@@ -44,9 +63,16 @@ function ProductContent({
           <p className="available">{isAvailable}</p>
           <p className="price">{price}₽ за 1 шт.</p>
           <div className="add-to-cart__container">
-            <input type="number" defaultValue="1" /> шт.
-            <button onClick={(e) => addObject(e.target)}>
-              Добавить в корзину
+            <input
+              type="number"
+              defaultValue="1"
+              min={1}
+              max={99}
+              onBlur={(e) => validateInput(e.target)}
+            />{' '}
+            шт.
+            <button onClick={(e) => addObject(e.target)} disabled={inCart}>
+              {inCart ? 'Уже в корзине' : 'Добавить в корзину'}
             </button>
           </div>
           <div className="characteristics">

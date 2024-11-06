@@ -1,9 +1,9 @@
-import FeedbackRating from './FeebackRating';
+import ProductRating from '../../ProductRating/ProductRating';
 
 function FeedbackItem({ username, commentDate, text, ratingScore }) {
   const rating = [];
   for (let i = 0; i < ratingScore; i++) {
-    rating.push(<FeedbackRating key={i} />);
+    rating.push(<ProductRating key={i} />);
   }
   const date = new Date(commentDate);
 

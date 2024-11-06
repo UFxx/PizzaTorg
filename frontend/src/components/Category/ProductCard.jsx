@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import ProductRating from '../Main/ProductRating';
+import ProductRating from '../ProductRating/ProductRating';
+import { useState, useEffect } from 'react';
 
 function ProductCard({
   id,
@@ -10,6 +11,16 @@ function ProductCard({
   order,
   setOrder
 }) {
+  const [inCart, setInCart] = useState(false);
+
+  useEffect(() => {
+    order.forEach((orderItem) => {
+      if (Number(orderItem.id) === Number(id)) {
+        setInCart(true);
+      }
+    });
+  }, [order, inCart]);
+
   const rating = [];
   for (let i = 0; i < productRating; i++) {
     rating.push(<ProductRating key={i} />);
@@ -39,7 +50,9 @@ function ProductCard({
         </div>
         <div className="card-price">
           <p>{productPrice}₽</p>
-          <button onClick={addObject}>В корзину</button>
+          <button onClick={addObject} disabled={inCart}>
+            {inCart ? 'В корзине' : 'В корзину'}
+          </button>
         </div>
         <div className="card-rating">{rating}</div>
       </div>
