@@ -2,17 +2,14 @@ import { useState, useEffect } from 'react';
 
 import CartItem from './CartItem';
 
-function Cart() {
+function Cart({ order, setOrder }) {
   const [total, setTotal] = useState(0);
   const cartItems = JSON.parse(localStorage.getItem('order'));
 
   useEffect(() => {
     const elements = Array.from(document.getElementsByClassName('item-price'));
     const total = elements.reduce(
-      (acc, element) =>
-        acc +
-        Number(element.innerText.split('₽')[0]) *
-          element.previousElementSibling.children[0].value,
+      (acc, element) => acc + parseInt(element.innerText.split('=')[1]),
       0
     );
     setTotal(total);
@@ -22,10 +19,7 @@ function Cart() {
         document.getElementsByClassName('item-price')
       );
       const total = elements.reduce(
-        (acc, element) =>
-          acc +
-          Number(element.innerText.split('₽')[0]) *
-            element.previousElementSibling.children[0].value,
+        (acc, element) => acc + parseInt(element.innerText.split('=')[1]),
         0
       );
       setTotal(total);
@@ -49,18 +43,24 @@ function Cart() {
       <div className="container">
         <p className="title">Корзина</p>
         <div className="cart-content">
-          {cartItems?.map((item) => {
-            return (
-              <CartItem
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                price={item.price}
-                img={item.photo}
-                amount={item.amount}
-              />
-            );
-          })}
+          {cartItems.length > 0 ? (
+            cartItems?.map((item) => {
+              return (
+                <CartItem
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  price={item.price}
+                  img={item.photo}
+                  amount={item.amount}
+                  order={order}
+                  setOrder={setOrder}
+                />
+              );
+            })
+          ) : (
+            <p>Тут пока ничего нет!</p>
+          )}
         </div>
         <div className="total-sum">
           <p>

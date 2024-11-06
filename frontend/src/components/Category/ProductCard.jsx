@@ -23,6 +23,7 @@ function ProductCard({
       photo: productImage,
       amount: 1
     };
+
     setOrder((order) => [...order, newObject]);
     localStorage.setItem('order', JSON.stringify(order));
   }

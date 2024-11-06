@@ -22,12 +22,12 @@ function HeaderMobileItem({ id, itemName, nestedCategories }) {
   return (
     <>
       <li onClick={(e) => openMenuItem(e.target)}>
-        <p className="mobile-menu-category-link">
+        <span className="mobile-menu-category-link">
           {itemName}
           <span>
             <img src={arrowDownIcon} alt="" />
           </span>
-          <div className="mobile-menu__extended">
+          <span className="mobile-menu__extended">
             <ul>
               <li>
                 <Link to={`/category?id=${id}`} onClick={refreshPage}>
@@ -47,8 +47,8 @@ function HeaderMobileItem({ id, itemName, nestedCategories }) {
                 );
               })}
             </ul>
-          </div>
-        </p>
+          </span>
+        </span>
       </li>
     </>
   );

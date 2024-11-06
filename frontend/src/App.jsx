@@ -40,7 +40,10 @@ function App() {
             path="/product"
             element={<Product order={order} setOrder={setOrder} />}
           />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={<Cart order={order} setOrder={setOrder} />}
+          />
           <Route path="/order-form" element={<OrderForm order={order} />} />
           <Route
             path="/search"
