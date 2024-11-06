@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import OrderItem from './OrderItem';
 import OrderResult from './OrderResult';
+import SuccessfulOrder from './SuccessfulOrder';
 
 function OrderForm({ order }) {
   function calculateSummary() {
@@ -39,6 +40,8 @@ function OrderForm({ order }) {
     ) {
       axios.post('http://127.0.0.1:8000/api-new_order/', data);
       button.setAttribute('disabled', '');
+      localStorage.clear('order');
+      window.location.href = '/order-successful';
     } else {
       [username, phone, address].forEach((input) => {
         if (input.value === '') {

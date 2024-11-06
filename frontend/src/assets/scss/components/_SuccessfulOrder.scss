@@ -1,0 +1,13 @@
+.successful-order-content {
+  margin-top: 15px;
+  a {
+    font-size: 20px;
+    padding: 5px 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    transition: 0.3s ease background-color;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}

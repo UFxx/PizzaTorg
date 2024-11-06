@@ -6,6 +6,7 @@ import Category from './components/Category/Category';
 import Product from './components/Product/Product';
 import Cart from './components/Cart/Cart';
 import OrderForm from './components/OrderForm/OrderForm';
+import SuccessfulOrder from './components/OrderForm/SuccessfulOrder';
 import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 
@@ -45,6 +46,7 @@ function App() {
             element={<Cart order={order} setOrder={setOrder} />}
           />
           <Route path="/order-form" element={<OrderForm order={order} />} />
+          <Route path="/order-successful" element={<SuccessfulOrder />} />
           <Route
             path="/search"
             element={<SearchPage order={order} setOrder={setOrder} />}

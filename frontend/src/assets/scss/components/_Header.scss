@@ -349,38 +349,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 }
 
-@media (max-width: 835px) {
-  .category-link {
-    font-size: 12px;
-  }
-
-  .search input {
-    font-size: 12px;
-    width: 115px;
-  }
-
-  .search input::placeholder {
-    font-size: 12px;
-  }
-
-  .cart {
-    font-size: 12px;
-  }
-
-  .logo-name {
-    font-size: 16px;
-  }
-
-  .logo-info p:first-child {
-    font-size: 14px;
-  }
-
-  .logo-info p:last-child {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1065px) {
   .header-menu {
     display: none;
   }
