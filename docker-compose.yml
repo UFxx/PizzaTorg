@@ -7,7 +7,7 @@ services:
     build: backend
     container_name: mydjangoserver
 
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: python3 manage.py runserver 172.19.0.2:8000
 
     volumes:
       - .:/backend
