@@ -1,12 +1,22 @@
-from itertools import product
-from tkinter.messagebox import YESNO
-
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from sortedm2m.fields import SortedManyToManyField
 # Create your models here.
 
+class User(AbstractUser):
+    phone = models.CharField(verbose_name='Номер телефона', max_length=14, blank=True, null=True)
+    address = models.CharField(verbose_name='Адрес', max_length=150,  blank=True, null=True)
 
+    def __str__(self):
+        return self.email
+
+    def save(self, *args, **kwargs):
+        if self.password and not self.password.startswith(('pbkdf2_sha256$', 'bcrypt$', 'argon2')):
+            self.password = make_password(self.password)
+
+        super().save(*args, **kwargs)
 
 class Category(models.Model):
     name = models.CharField(max_length=250, verbose_name='Категория', unique=True)
@@ -82,9 +92,7 @@ class Product(models.Model):
 
 
 class Comment(models.Model):
-    username = models.CharField(max_length=100, verbose_name='Имя пользователя')
-    email = models.EmailField(max_length=150, verbose_name='Почта', blank=True, null=True)
-    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     rating = models.PositiveIntegerField(verbose_name='Рейтинг')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Продукт', blank=True, null=True)
     text = models.TextField(verbose_name='Сообщение', blank=True, null=True)
@@ -120,9 +128,9 @@ class Order(models.Model):
         ("Оплачено", "Оплачено"),
 
     )
-    username = models.CharField(max_length=150, verbose_name='Имя пользователя')
-    phone = models.CharField(max_length=14, verbose_name='Номер телефона', )
-    address = models.CharField(max_length=14, verbose_name='Адрес', )
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name='Пользователь', null=True, blank=True)
+    address = models.CharField(max_length=14, verbose_name='Адрес', blank=True, null=True)
+    phone = models.CharField(verbose_name='Номер телефона', max_length=14, blank=True, null=True)
     order_points = SortedManyToManyField(OrderPoint, verbose_name="Пункт заказа")
     price = models.PositiveIntegerField(blank=True, null=True,  verbose_name='Цена заказа', )
     status = models.CharField(max_length=50, verbose_name='Статус', default='Не оплачено', choices=status_field )
