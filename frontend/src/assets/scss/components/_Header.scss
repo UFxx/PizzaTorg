@@ -111,7 +111,7 @@ li:hover .menu-item__extended {
 
 .menu-item__extended li a {
   position: relative;
-  color: black;
+  color: white;
   font-size: 20px;
   margin-top: 10px;
   padding-bottom: 1px;
@@ -123,7 +123,7 @@ li:hover .menu-item__extended {
   content: '';
   width: 100%;
   height: 2px;
-  background-color: black;
+  background-color: white;
   top: calc(100% + 1px);
   left: calc(-100% - 10px);
   transition: 0.3s ease left;

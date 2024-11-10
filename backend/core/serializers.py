@@ -50,7 +50,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class ProductCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('id', 'name','image', 'price', 'get_rating')
+        fields = ('id', 'name','image', 'price', 'get_rating', 'category')
 
 class IngredientSerializer(serializers.ModelSerializer):
     model = Ingredient
