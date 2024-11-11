@@ -5,21 +5,10 @@ import axios from 'axios';
 import HeaderMobile from './HeaderMobile';
 import MainMenuItem from './MainMenuItem';
 import Search from './Search';
-
-import cartIcon from '../../assets/images/cart.png';
+import RightMenu from './RightMenu';
 
 function Header({ order }) {
   const [data, setData] = useState();
-
-  function calculateTotalCartPrice() {
-    let sum = 0;
-
-    order?.forEach((orderItem) => {
-      sum += parseInt(orderItem.price) * orderItem.amount;
-    });
-
-    return sum;
-  }
 
   useEffect(() => {
     axios
@@ -61,12 +50,7 @@ function Header({ order }) {
           <HeaderMobile data={data} />
           <div className="right-menu">
             <Search />
-            <div className="cart">
-              <Link to="/cart" className="cart-icon">
-                <img src={cartIcon} alt="" />
-              </Link>
-              <Link to="/cart">{calculateTotalCartPrice()}₽</Link>
-            </div>
+            <RightMenu order={order} />
           </div>
         </div>
       </header>

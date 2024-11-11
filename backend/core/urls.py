@@ -20,6 +20,6 @@ urlpatterns = [
     path('api-new_order/', OrderCreateView.as_view(), name='api-new_order'),
     # Комментарии 
     path('api-new_comment/', CommentCreateView.as_view(), name='api-new_comment'),
-    #Регистрация
+    # Регистрация
     path('api-register/', UserCreateView.as_view(), name='api-register')
 ]
