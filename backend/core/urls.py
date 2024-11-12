@@ -21,5 +21,7 @@ urlpatterns = [
     # Комментарии 
     path('api-new_comment/', CommentCreateView.as_view(), name='api-new_comment'),
     # Регистрация
-    path('api-register/', UserCreateView.as_view(), name='api-register')
+    path('api-register/', UserCreateView.as_view(), name='api-register'),
+    # Данные о пользователе
+    path('api-user_detail/', UserRetrieveView.as_view(), name='api-user_detail')
 ]

@@ -116,6 +116,8 @@ class OrderSerializer(serializers.ModelSerializer):
             order_user = None
             phone = validated_data.get('phone', '')
             address = validated_data.get('address', '')
+        if phone == "" or phone == None:
+            raise serializers.ValidationError("Номер не заполнен")
         order = Order.objects.create(user=order_user, phone=phone, address=address)
 
 
@@ -127,3 +129,9 @@ class OrderSerializer(serializers.ModelSerializer):
         order.price = full_price
         order.save()
         return order
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id',  'first_name', 'last_name', 'email', 'phone', 'address',)

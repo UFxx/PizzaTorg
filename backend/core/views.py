@@ -79,3 +79,16 @@ class CommentCreateView(CreateAPIView):
 class OrderCreateView(CreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+
+class UserRetrieveView(RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsAuthenticated,)
+    lookup_field = None
+
+    def get_object(self):
+
+        return self.request.user
+
+
