@@ -6,17 +6,27 @@ import axios from 'axios';
 function Login({ setOpenLogin, setOpenRegistration }) {
   function login(button) {
     const username =
-      button.parentElement.previousElementSibling.previousElementSibling.value;
-    const password = button.parentElement.previousElementSibling.value;
+      button.parentElement.previousElementSibling.previousElementSibling;
+    const password = button.parentElement.previousElementSibling;
 
     const data = {
-      username: username,
-      password: password
+      username: username.value,
+      password: password.value
     };
 
-    axios.post('http://localhost:8000/auth/jwt/create', data).then((data) => {
-      localStorage.setItem('JWT', data.data.access);
-    });
+    axios
+      .post('http://localhost:8000/auth/jwt/create', data)
+      .then((data) => {
+        localStorage.setItem('JWT', data.data.access);
+        if (data.status === 200) {
+          window.location.href = new URL(window.location);
+        }
+      })
+      .catch((err) => {
+        [username, password].forEach((input) => {
+          input.style.border = '2px solid red';
+        });
+      });
   }
 
   return (
@@ -34,8 +44,28 @@ function Login({ setOpenLogin, setOpenRegistration }) {
               alt="close icon"
               onClick={() => setOpenLogin(false)}
             />
-            <input type="text" placeholder="Логин" />
-            <input type="password" placeholder="Пароль" />
+            <input
+              type="text"
+              placeholder="Логин"
+              autoComplete="username"
+              onKeyUp={(e) =>
+                e.key === 'Enter'
+                  ? login(
+                      e.target.nextElementSibling.nextElementSibling.children[0]
+                    )
+                  : null
+              }
+            />
+            <input
+              type="password"
+              placeholder="Пароль"
+              autoComplete="current-password"
+              onKeyUp={(e) =>
+                e.key === 'Enter'
+                  ? login(e.target.nextElementSibling.children[0])
+                  : null
+              }
+            />
             <div className="login-buttons">
               <button type="button" onClick={(e) => login(e.target)}>
                 Войти

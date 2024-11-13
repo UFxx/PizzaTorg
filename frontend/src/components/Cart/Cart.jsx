@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { useState, useEffect } from 'react';
 
 import CartItem from './CartItem';
@@ -66,11 +68,11 @@ function Cart({ order, setOrder }) {
           <p>
             Итого: <span id="sum">{total}</span>₽
           </p>
-          <a href="/order-form">
+          <Link to="/order-form">
             <button disabled={order.length > 0 ? false : true}>
               Оформить заказ
             </button>
-          </a>
+          </Link>
         </div>
       </div>
     </>

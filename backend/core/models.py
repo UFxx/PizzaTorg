@@ -50,7 +50,7 @@ class Product(models.Model):
     description = models.TextField(verbose_name='Описание', blank=True, null=True)
     ingredients = SortedManyToManyField(Ingredient, blank=True, verbose_name='Ингридиенты')
     size = models.PositiveIntegerField(verbose_name='Размер', blank=True, null=True)
-    weight = models.PositiveIntegerField(verbose_name='Размер', blank=True, null=True)
+    weight = models.PositiveIntegerField(verbose_name='Вес', blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, verbose_name='Категория',  blank=True, null=True)
     start_price = models.PositiveIntegerField(verbose_name='Начальная цена')
     discount = models.DecimalField(verbose_name='Скидка', max_digits=5, decimal_places=2,

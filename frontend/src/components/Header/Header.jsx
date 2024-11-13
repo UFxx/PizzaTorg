@@ -7,7 +7,7 @@ import MainMenuItem from './MainMenuItem';
 import Search from './Search';
 import RightMenu from './RightMenu';
 
-function Header({ order }) {
+function Header({ order, userData, setUserData }) {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -50,7 +50,11 @@ function Header({ order }) {
           <HeaderMobile data={data} />
           <div className="right-menu">
             <Search />
-            <RightMenu order={order} />
+            <RightMenu
+              order={order}
+              userData={userData}
+              setUserData={setUserData}
+            />
           </div>
         </div>
       </header>

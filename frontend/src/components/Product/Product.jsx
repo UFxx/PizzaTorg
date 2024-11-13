@@ -33,7 +33,7 @@ function Product({ order, setOrder }) {
           productPhoto={aboutProduct?.image}
           price={aboutProduct?.price}
           size={aboutProduct?.size}
-          composition={aboutProduct?.ingridients?.join(', ')}
+          ingredients={aboutProduct?.ingredients}
           weight={aboutProduct?.weight}
           ratingScore={aboutProduct?.get_rating}
           order={order}
@@ -68,26 +68,27 @@ function Product({ order, setOrder }) {
           <div className="leave-a-feedback__title">Оставить отзыв</div>
           <LeaveFeedbackForm productId={productId} />
         </div>
-        <div className="recomended-products">
-          <p className="recomended-products__title">
-            Покупатели, которые приобрели Осетинский пирог с сыром. Уалибах,
-            также купили:
-          </p>
-          <div className="recomended-products-content">
-            {aboutProduct?.get_similar_products?.map((similarProduct) => {
-              return (
-                <RecomendedProduct
-                  key={similarProduct.id}
-                  id={similarProduct.id}
-                  name={similarProduct.name}
-                  price={similarProduct.price}
-                  photo={similarProduct.image}
-                  ratingScore={similarProduct.get_rating}
-                />
-              );
-            })}
+        {aboutProduct?.get_similar_products.length < 1 ? null : (
+          <div className="recomended-products">
+            <p className="recomended-products__title">
+              Покупатели, которые приобрели {aboutProduct?.name}, также купили:
+            </p>
+            <div className="recomended-products-content">
+              {aboutProduct?.get_similar_products?.map((similarProduct) => {
+                return (
+                  <RecomendedProduct
+                    key={similarProduct.id}
+                    id={similarProduct.id}
+                    name={similarProduct.name}
+                    price={similarProduct.price}
+                    photo={similarProduct.image}
+                    ratingScore={similarProduct.get_rating}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

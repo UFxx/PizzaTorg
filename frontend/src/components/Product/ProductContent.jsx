@@ -8,12 +8,18 @@ function ProductContent({
   productPhoto,
   price,
   size,
-  composition,
+  ingredients,
   weight,
   ratingScore,
   order,
   setOrder
 }) {
+  const composition = ingredients
+    ?.map((ingredient) => {
+      return ingredient.name;
+    })
+    .join(', ');
+
   const [inCart, setInCart] = useState(false);
 
   useEffect(() => {

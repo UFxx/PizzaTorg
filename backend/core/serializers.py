@@ -53,8 +53,9 @@ class ProductCardSerializer(serializers.ModelSerializer):
         fields = ('id', 'name','image', 'price', 'get_rating', 'category')
 
 class IngredientSerializer(serializers.ModelSerializer):
-    model = Ingredient
-    fields = '__all__'
+    class Meta:
+        model = Ingredient
+        fields = ('name',)
 
 class CommentUserSerializer(serializers.ModelSerializer):
 

@@ -21,20 +21,24 @@ function SearchPage({ order, setOrder }) {
       <div className="container">
         <div className="search-content">
           <div className="products">
-            {data?.map((product) => {
-              return (
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  productName={product.name}
-                  productPrice={product.price}
-                  productRating={product.get_rating}
-                  productImage={product.image}
-                  order={order}
-                  setOrder={setOrder}
-                />
-              );
-            })}
+            {data?.length < 1 ? (
+              <p style={{ fontSize: 24 }}>Ничего не найдено</p>
+            ) : (
+              data?.map((product) => {
+                return (
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    productName={product.name}
+                    productPrice={product.price}
+                    productRating={product.get_rating}
+                    productImage={product.image}
+                    order={order}
+                    setOrder={setOrder}
+                  />
+                );
+              })
+            )}
           </div>
         </div>
       </div>

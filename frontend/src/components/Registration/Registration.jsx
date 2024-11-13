@@ -48,7 +48,11 @@ function Registration({ setOpenLogin, setOpenRegistration }) {
               <input type="email" placeholder="Почта" />
               <input type="tel" placeholder="Телефон" />
               <input type="text" placeholder="Адрес" />
-              <input type="password" placeholder="Пароль" />
+              <input
+                type="password"
+                placeholder="Пароль"
+                autoComplete="new-password"
+              />
               <input type="password" placeholder="Повторите пароль" />
             </div>
             <div className="registration-buttons">

@@ -7,14 +7,27 @@ import profileIcon from '../../assets/images/profile-icon.png';
 
 import Login from '../Login/Login';
 import Registration from '../Registration/Registration';
+import axios from 'axios';
 
-function RightMenu({ order }) {
+function RightMenu({ order, userData, setUserData }) {
   const [openRightMenu, setOpenRightMenu] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegistration, setOpenRegistration] = useState(false);
 
   useEffect(() => {
-    if (openLogin || openRegistration) {
+    setOpenRightMenu(false);
+
+    if (localStorage.getItem('JWT')) {
+      const config = {
+        headers: { Authorization: 'Bearer ' + localStorage.getItem('JWT') }
+      };
+
+      axios
+        .get('http://localhost:8000/api-user_detail/', config)
+        .then((data) => setUserData(data.data));
+    }
+
+    if ((openLogin || openRegistration) && !localStorage.getItem('JWT')) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -50,18 +63,26 @@ function RightMenu({ order }) {
           </Link>
           <Link to="/cart">{calculateTotalCartPrice()}₽</Link>
         </div>
-        <div className="profile" onClick={() => setOpenLogin(true)}>
+        <Link
+          to={localStorage.getItem('JWT') ? '/profile' : null}
+          className="profile"
+          onClick={() => setOpenLogin(true)}
+        >
           <img src={profileIcon} alt="" />
-          <p>Профиль</p>
-        </div>
+          {localStorage.getItem('JWT') ? (
+            <p>{userData?.first_name}</p>
+          ) : (
+            <p>Профиль</p>
+          )}
+        </Link>
       </div>
-      {openLogin ? (
+      {openLogin && !localStorage.getItem('JWT') ? (
         <Login
           setOpenLogin={setOpenLogin}
           setOpenRegistration={setOpenRegistration}
         />
       ) : null}
-      {openRegistration ? (
+      {openRegistration && !localStorage.getItem('JWT') ? (
         <Registration
           setOpenLogin={setOpenLogin}
           setOpenRegistration={setOpenRegistration}

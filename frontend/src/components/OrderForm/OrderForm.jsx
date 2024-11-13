@@ -2,9 +2,8 @@ import axios from 'axios';
 
 import OrderItem from './OrderItem';
 import OrderResult from './OrderResult';
-import SuccessfulOrder from './SuccessfulOrder';
 
-function OrderForm({ order }) {
+function OrderForm({ order, userData }) {
   function calculateSummary() {
     let summary = 0;
     order?.forEach((el) => {
@@ -33,17 +32,13 @@ function OrderForm({ order }) {
       text: text.value
     };
 
-    if (
-      (username.value !== '') &
-      (phone.value !== '') &
-      (address.value !== '')
-    ) {
+    if ((username.value !== '') & (phone.value !== '')) {
       axios.post('http://127.0.0.1:8000/api-new_order/', data);
       button.setAttribute('disabled', '');
-      localStorage.clear('order');
+      localStorage.setItem('order', JSON.stringify([]));
       window.location.href = '/order-successful';
     } else {
-      [username, phone, address].forEach((input) => {
+      [username, phone].forEach((input) => {
         if (input.value === '') {
           input.style.border = '2px solid red';
         } else {
@@ -59,10 +54,25 @@ function OrderForm({ order }) {
         <p className="title">Заказ</p>
         <div className="order-content">
           <form action="" className="order__form">
-            <input type="text" name="" placeholder="Имя" />
-            <input type="tel" name="" placeholder="Телефон" />
+            <input
+              type="text"
+              name=""
+              placeholder="Имя"
+              defaultValue={userData?.first_name}
+            />
+            <input
+              type="tel"
+              name=""
+              placeholder="Телефон"
+              defaultValue={userData?.phone}
+            />
             <p>Улица, дом, квартира</p>
-            <input type="text" name="" placeholder="Адрес" />
+            <input
+              type="text"
+              name=""
+              placeholder="Адрес"
+              defaultValue={userData?.address}
+            />
             <textarea placeholder="Комментарий к заказу"></textarea>
           </form>
         </div>
