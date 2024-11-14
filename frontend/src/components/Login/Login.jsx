@@ -46,8 +46,8 @@ function Login({ setOpenLogin, setOpenRegistration }) {
             />
             <input
               type="text"
-              placeholder="Логин"
-              autoComplete="username"
+              placeholder="Почта"
+              autoComplete="email"
               onKeyUp={(e) =>
                 e.key === 'Enter'
                   ? login(

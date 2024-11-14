@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 function Profile({ userData }) {
   const [canChange, setCanChange] = useState(false);
@@ -8,7 +9,36 @@ function Profile({ userData }) {
     window.location.href = '/index';
   }
 
-  function profileEdit() {}
+  function profileEdit(button) {
+    const form = button.parentElement.previousElementSibling;
+    const firstName = form.children[0].children[1];
+    const lastName = form.children[1].children[1];
+    const email = form.children[2].children[1];
+    const address = form.children[3].children[1];
+    const phone = form.children[4].children[1];
+
+    const config = {
+      headers: { Authorization: 'Bearer ' + localStorage.getItem('JWT') }
+    };
+
+    axios
+      .patch(
+        'http://localhost:8000/api-user_detail/',
+        {
+          first_name: firstName.value,
+          last_name: lastName.value,
+          email: email.value,
+          address: address.value,
+          phone: phone.value
+        },
+        config
+      )
+      .then((data) => {
+        if (data.status === 200) {
+          setCanChange(false);
+        }
+      });
+  }
 
   return (
     <>
@@ -22,6 +52,7 @@ function Profile({ userData }) {
                 type="text"
                 defaultValue={userData?.first_name}
                 disabled={!canChange}
+                autoComplete="name"
               />
             </div>
             <div>
@@ -30,14 +61,16 @@ function Profile({ userData }) {
                 type="text"
                 defaultValue={userData?.last_name}
                 disabled={!canChange}
+                autoComplete="family-name"
               />
             </div>
             <div>
               <p>Почта:</p>
               <input
                 type="email"
-                defaultValue={userData?.email}
+                defaultValue={userData?.username}
                 disabled={!canChange}
+                autoComplete="email"
               />
             </div>
             <div>
@@ -46,19 +79,17 @@ function Profile({ userData }) {
                 type="text"
                 defaultValue={userData?.address}
                 disabled={!canChange}
+                autoComplete="street-address"
               />
             </div>
             <div>
-              <p>Телефона:</p>
+              <p>Телефон:</p>
               <input
                 type="tel"
                 defaultValue={userData?.phone}
                 disabled={!canChange}
+                autoComplete="tel"
               />
-            </div>
-            <div>
-              <p>Новый пароль:</p>
-              <input type="password" autoComplete="new-password" />
             </div>
           </form>
           <div className="profile-buttons">
@@ -69,7 +100,12 @@ function Profile({ userData }) {
               <button onClick={() => setCanChange(true)}>Изменить</button>
             )}
             {canChange && (
-              <button id="profile-save" onClick={() => setCanChange(false)}>
+              <button
+                id="profile-save"
+                onClick={(e) => {
+                  profileEdit(e.target);
+                }}
+              >
                 Сохранить
               </button>
             )}

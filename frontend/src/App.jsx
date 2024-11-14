@@ -17,7 +17,6 @@ function App() {
     return savedOrder ? JSON.parse(savedOrder) : [];
   });
   const [userData, setUserData] = useState();
-  console.log(userData);
 
   useEffect(() => {
     localStorage.setItem('order', JSON.stringify(order));
