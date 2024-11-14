@@ -85,9 +85,11 @@ function ProductContent({
             <p>
               Размер: <span>{size}</span>см.
             </p>
-            <p>
-              Состав: <span>{composition}</span>
-            </p>
+            {composition?.length > 1 ? (
+              <p>
+                Состав: <span>{composition}</span>
+              </p>
+            ) : null}
             <p>
               Вес: <span>{weight}</span> гр.
             </p>
