@@ -68,7 +68,7 @@ function Profile({ userData }) {
               <p>Почта:</p>
               <input
                 type="email"
-                defaultValue={userData?.username}
+                defaultValue={userData?.email}
                 disabled={!canChange}
                 autoComplete="email"
               />
