@@ -12,7 +12,7 @@ import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const host = '127.0.1.1';
+  const host = '31.128.41.110';
 
   const [order, setOrder] = useState(() => {
     const savedOrder = localStorage.getItem('order');
