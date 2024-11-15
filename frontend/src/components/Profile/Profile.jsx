@@ -23,7 +23,7 @@ function Profile({ userData }) {
 
     axios
       .patch(
-        'http://localhost:8000/api-user_detail/',
+        `http://${host}:8000/api-user_detail/`,
         {
           first_name: firstName.value,
           last_name: lastName.value,
@@ -68,7 +68,7 @@ function Profile({ userData }) {
               <p>Почта:</p>
               <input
                 type="email"
-                defaultValue={userData?.username}
+                defaultValue={userData?.email}
                 disabled={!canChange}
                 autoComplete="email"
               />

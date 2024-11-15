@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import *
-
-
+from .service import send_new_order_email
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
@@ -129,6 +128,7 @@ class OrderSerializer(serializers.ModelSerializer):
             order.order_points.add(order_point)
         order.price = full_price
         order.save()
+        send_new_order_email(order.pk)
         return order
 
 class UserSerializer(serializers.ModelSerializer):
@@ -146,4 +146,5 @@ class UserSerializer(serializers.ModelSerializer):
         instance.address = validated_data.get('address', instance.address)
 
         instance.save()
+
         return  instance

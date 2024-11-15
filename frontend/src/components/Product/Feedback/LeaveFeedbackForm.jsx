@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function LeaveFeedbackForm({ productId }) {
+function LeaveFeedbackForm({ host, productId }) {
   function createNewComment(button) {
     const form = button.parentElement;
     const username = form.children[1].value;
@@ -9,7 +9,7 @@ function LeaveFeedbackForm({ productId }) {
     const text = form.children[3].value;
 
     axios
-      .post('http://127.0.0.1:8000/api-new_comment/', {
+      .post(`http://${host}:8000/api-new_comment/`, {
         username: username,
         email: '',
         title: theme,

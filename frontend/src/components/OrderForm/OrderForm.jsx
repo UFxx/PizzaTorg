@@ -3,7 +3,7 @@ import axios from 'axios';
 import OrderItem from './OrderItem';
 import OrderResult from './OrderResult';
 
-function OrderForm({ order, userData }) {
+function OrderForm({ host, order, userData }) {
   function calculateSummary() {
     let summary = 0;
     order?.forEach((el) => {
@@ -33,7 +33,7 @@ function OrderForm({ order, userData }) {
     };
 
     if ((username.value !== '') & (phone.value !== '')) {
-      axios.post('http://127.0.0.1:8000/api-new_order/', data);
+      axios.post(`http://${host}:8000/api-new_order/`, data);
       button.setAttribute('disabled', '');
       localStorage.setItem('order', JSON.stringify([]));
       window.location.href = '/order-successful';

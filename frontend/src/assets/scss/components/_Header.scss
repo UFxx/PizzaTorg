@@ -256,11 +256,18 @@ input[type='search']::-webkit-search-results-decoration {
 .header-mobile-menu__list span {
   display: flex;
   align-items: center;
+  justify-content: center;
   column-gap: 5px;
   color: white;
+  white-space: nowrap;
   img {
     width: 15px;
   }
+}
+
+.mobile-menu__extended {
+  top: 50px !important;
+  left: 50% !important;
 }
 
 @media (max-width: 1650px) {
@@ -341,10 +348,6 @@ input[type='search']::-webkit-search-results-decoration {
     height: 25px;
     width: 25px;
     left: calc(100% - 25px);
-  }
-
-  .right-menu {
-    column-gap: 5px;
   }
 
   .search input::placeholder {
@@ -489,6 +492,12 @@ input[type='search']::-webkit-search-results-decoration {
 
   .header-mobile-menu button {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 460px) {
+  .right-menu {
+    column-gap: 10px;
   }
 }
 

@@ -15,11 +15,11 @@ function Product({ order, setOrder }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api-product_detail/${productId}/`)
+      .get(`http://${host}:8000/api-product_detail/${productId}/`)
       .then((data) => setAboutProduct(data.data));
 
     axios
-      .get(`http://localhost:8000/api-comment_list/${productId}`)
+      .get(`http://${host}:8000/api-comment_list/${productId}`)
       .then((data) => setProductFeedback(data.data.comments));
   }, []);
 
@@ -66,7 +66,7 @@ function Product({ order, setOrder }) {
         </div>
         <div className="leave-a-feedback">
           <div className="leave-a-feedback__title">Оставить отзыв</div>
-          <LeaveFeedbackForm productId={productId} />
+          <LeaveFeedbackForm host={host} productId={productId} />
         </div>
         {aboutProduct?.get_similar_products.length < 1 ? null : (
           <div className="recomended-products">
