@@ -5,7 +5,7 @@ from .models import *
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'last_name',  'email', 'phone', 'address')
-    search_fields = ()
+    search_fields = ('phone', 'email')
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
