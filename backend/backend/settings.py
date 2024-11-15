@@ -33,7 +33,7 @@ DEBUG_TOOLBAR_CONFIG = {
 SECRET_KEY = 'django-insecure-ta)-+qu83m4a*#yb!!-_)@$38)u8s-dpf@67g9nz&8vpq7s*iu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 

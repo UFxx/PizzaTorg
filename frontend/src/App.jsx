@@ -12,6 +12,8 @@ import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
+  const host = '31.128.41.110';
+
   const [order, setOrder] = useState(() => {
     const savedOrder = localStorage.getItem('order');
     return savedOrder ? JSON.parse(savedOrder) : [];
@@ -25,23 +27,28 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header order={order} userData={userData} setUserData={setUserData} />
+        <Header
+          host={host}
+          order={order}
+          userData={userData}
+          setUserData={setUserData}
+        />
         <Routes>
           <Route
             path="/"
-            element={<Main order={order} setOrder={setOrder} />}
+            element={<Main host={host} order={order} setOrder={setOrder} />}
           />
           <Route
             path="/index"
-            element={<Main order={order} setOrder={setOrder} />}
+            element={<Main host={host} order={order} setOrder={setOrder} />}
           />
           <Route
             path="/category"
-            element={<Category order={order} setOrder={setOrder} />}
+            element={<Category host={host} order={order} setOrder={setOrder} />}
           />
           <Route
             path="/product"
-            element={<Product order={order} setOrder={setOrder} />}
+            element={<Product host={host} order={order} setOrder={setOrder} />}
           />
           <Route
             path="/cart"
@@ -49,14 +56,21 @@ function App() {
           />
           <Route
             path="/order-form"
-            element={<OrderForm order={order} userData={userData} />}
+            element={
+              <OrderForm host={host} order={order} userData={userData} />
+            }
           />
           <Route path="/order-successful" element={<SuccessfulOrder />} />
           <Route
             path="/search"
-            element={<SearchPage order={order} setOrder={setOrder} />}
+            element={
+              <SearchPage host={host} order={order} setOrder={setOrder} />
+            }
           />
-          <Route path="/profile" element={<Profile userData={userData} />} />
+          <Route
+            path="/profile"
+            element={<Profile host={host} userData={userData} />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

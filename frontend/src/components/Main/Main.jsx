@@ -4,7 +4,7 @@ import SliderItem from './SliderItem';
 import Category from './Category';
 import axios from 'axios';
 
-function Main({ order, setOrder }) {
+function Main({ host, order, setOrder }) {
   const [sliderOffset, setSliderOffset] = useState(0);
   const [allCategories, setAllCategories] = useState();
   const slider = useRef();
@@ -35,7 +35,7 @@ function Main({ order, setOrder }) {
     }
 
     axios
-      .get('http://127.0.0.1:8000/api-category/')
+      .get(`http://${host}:8000/api-category/`)
       .then((data) => setAllCategories(data.data.categories));
   }, [sliderOffset]);
 
@@ -73,6 +73,7 @@ function Main({ order, setOrder }) {
           return (
             <Category
               key={category.id}
+              host={host}
               name={category.name}
               nestedCategories={category.nested_categories}
               order={order}

@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import Product from './Product';
 import axios from 'axios';
 
-function Subcategory({ id, name, order, setOrder }) {
+function Subcategory({ host, id, name, order, setOrder }) {
   const [products, setProducts] = useState();
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api-product_cards_list/${id}/`)
+      .get(`http://${host}:8000/api-product_cards_list/${id}/`)
       .then((data) => setProducts(data.data.products));
   }, []);
 

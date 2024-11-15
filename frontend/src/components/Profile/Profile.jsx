@@ -23,7 +23,7 @@ function Profile({ userData }) {
 
     axios
       .patch(
-        'http://localhost:8000/api-user_detail/',
+        `http://${host}:8000/api-user_detail/`,
         {
           first_name: firstName.value,
           last_name: lastName.value,

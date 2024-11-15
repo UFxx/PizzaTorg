@@ -7,12 +7,12 @@ import MainMenuItem from './MainMenuItem';
 import Search from './Search';
 import RightMenu from './RightMenu';
 
-function Header({ order, userData, setUserData }) {
+function Header({ host, order, userData, setUserData }) {
   const [data, setData] = useState();
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api-category/')
+      .get(`http://${host}:8000/api-category/`)
       .then((data) => setData(data.data.categories));
   }, []);
 
