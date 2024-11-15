@@ -103,7 +103,7 @@ class Comment(models.Model):
         verbose_name_plural = 'Комментарии'
 
     def __str__(self):
-        return f'Пользователь {self.username} комментарий'
+        return f'Пользователь {self.user} комментарий'
 
 
 class OrderPoint(models.Model):
