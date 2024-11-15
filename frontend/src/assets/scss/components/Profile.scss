@@ -55,3 +55,41 @@
     }
   }
 }
+
+@media (max-width: 465px) {
+  .profile-form {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 441px) {
+  .profile-content {
+    .profile-form {
+      div {
+        width: 330px;
+      }
+    }
+  }
+}
+
+@media (max-width: 376px) {
+  .profile-content {
+    .profile-form {
+      div {
+        width: 280px;
+        p {
+          font-size: 18px;
+        }
+        input {
+          font-size: 18px;
+          width: 180px;
+        }
+      }
+    }
+    .profile-buttons {
+      button {
+        font-size: 18px !important;
+      }
+    }
+  }
+}
