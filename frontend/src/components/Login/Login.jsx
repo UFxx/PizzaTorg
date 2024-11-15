@@ -19,7 +19,7 @@ function Login({ setOpenLogin, setOpenRegistration }) {
       .then((data) => {
         localStorage.setItem('JWT', data.data.access);
         if (data.status === 200) {
-          window.location.href = new URL(window.location);
+          window.location.href = '/profile';
         }
       })
       .catch((err) => {
