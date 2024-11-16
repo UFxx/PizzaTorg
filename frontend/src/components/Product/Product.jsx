@@ -7,7 +7,7 @@ import RecomendedProduct from './Recomendations/RecomendedProduct';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Product({ order, setOrder }) {
+function Product({ host, order, setOrder }) {
   const [aboutProduct, setAboutProduct] = useState();
   const [productFeedback, setProductFeedback] = useState();
 

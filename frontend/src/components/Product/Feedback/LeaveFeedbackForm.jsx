@@ -8,15 +8,23 @@ function LeaveFeedbackForm({ host, productId }) {
     const rating = form.children[2].children[0].value;
     const text = form.children[3].value;
 
+    const config = {
+      headers: { Authorization: 'Bearer ' + localStorage.getItem('JWT') }
+    };
+
     axios
-      .post(`http://${host}:8000/api-new_comment/`, {
-        username: username,
-        email: '',
-        title: theme,
-        rating: rating,
-        product: productId,
-        text: text
-      })
+      .post(
+        `http://${host}:8000/api-new_comment/`,
+        {
+          username: username,
+          email: '',
+          title: theme,
+          rating: rating,
+          product: productId,
+          text: text
+        },
+        config
+      )
       .then(() => {
         [username, theme, text].forEach((value) => {
           value = 0;

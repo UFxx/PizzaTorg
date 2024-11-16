@@ -35,40 +35,40 @@ function App() {
         />
         <Routes>
           <Route
-            path=""
+            path="/"
             element={<Main host={host} order={order} setOrder={setOrder} />}
           />
           <Route
-            path="index"
+            path="/index"
             element={<Main host={host} order={order} setOrder={setOrder} />}
           />
           <Route
-            path="category"
+            path="/category"
             element={<Category host={host} order={order} setOrder={setOrder} />}
           />
           <Route
-            path="product"
+            path="/product"
             element={<Product host={host} order={order} setOrder={setOrder} />}
           />
           <Route
-            path="cart"
+            path="/cart"
             element={<Cart order={order} setOrder={setOrder} />}
           />
           <Route
-            path="order-form"
+            path="/order-form"
             element={
               <OrderForm host={host} order={order} userData={userData} />
             }
           />
-          <Route path="order-successful" element={<SuccessfulOrder />} />
+          <Route path="/order-successful" element={<SuccessfulOrder />} />
           <Route
-            path="search"
+            path="/search"
             element={
               <SearchPage host={host} order={order} setOrder={setOrder} />
             }
           />
           <Route
-            path="profile"
+            path="/profile"
             element={<Profile host={host} userData={userData} />}
           />
         </Routes>

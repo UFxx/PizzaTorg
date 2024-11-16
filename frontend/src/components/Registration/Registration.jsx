@@ -26,7 +26,7 @@ function Registration({ setOpenLogin, setOpenRegistration }) {
       password: password,
       repeat_password: repeatPassword
     };
-    axios.post('http://localhost:8000/api-register/', data).then((data) => {
+    axios.post(`http://${host}:8000/api-register/`, data).then((data) => {
       if (data.status === 201) {
         setOpenLogin(true);
         setOpenRegistration(false);

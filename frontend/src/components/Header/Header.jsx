@@ -51,6 +51,7 @@ function Header({ host, order, userData, setUserData }) {
           <div className="right-menu">
             <Search />
             <RightMenu
+              host={host}
               order={order}
               userData={userData}
               setUserData={setUserData}

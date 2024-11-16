@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-function Profile({ userData }) {
+function Profile({ host, userData }) {
   const [canChange, setCanChange] = useState(false);
 
   function profileExit() {

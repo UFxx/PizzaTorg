@@ -33,10 +33,14 @@ function OrderForm({ host, order, userData }) {
     };
 
     if ((username.value !== '') & (phone.value !== '')) {
-      axios.post(`http://${host}:8000/api-new_order/`, data);
+      axios.post(`http://${host}:8000/api-new_order/`, data).then((data) => {
+        console.log(data.status);
+        if (data.status === 201) {
+          window.location.href = '/order-successful';
+        }
+      });
       button.setAttribute('disabled', '');
       localStorage.setItem('order', JSON.stringify([]));
-      window.location.href = '/order-successful';
     } else {
       [username, phone].forEach((input) => {
         if (input.value === '') {
