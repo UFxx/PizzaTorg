@@ -41,7 +41,7 @@ function ProductCard({
 
   return (
     <div className="product-card">
-      <Link to={`/product?id=${id}`}>
+      <Link to={`product?id=${id}`}>
         <img src={productImage} alt="" />
       </Link>
       <div className="card-content">
