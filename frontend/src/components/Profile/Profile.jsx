@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-function Profile({ host, userData }) {
+function Profile({ host, port, userData }) {
   const [canChange, setCanChange] = useState(false);
 
   function profileExit() {
@@ -23,7 +23,7 @@ function Profile({ host, userData }) {
 
     axios
       .patch(
-        `http://${host}:8000/api-user_detail/`,
+        `http://${host}:${port}/api-user_detail/`,
         {
           first_name: firstName.value,
           last_name: lastName.value,

@@ -7,7 +7,7 @@ import RecomendedProduct from './Recomendations/RecomendedProduct';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Product({ host, order, setOrder }) {
+function Product({ host, port, order, setOrder }) {
   const [aboutProduct, setAboutProduct] = useState();
   const [productFeedback, setProductFeedback] = useState();
 
@@ -15,11 +15,11 @@ function Product({ host, order, setOrder }) {
 
   useEffect(() => {
     axios
-      .get(`http://${host}:8000/api-product_detail/${productId}/`)
+      .get(`http://${host}:${port}/api-product_detail/${productId}/`)
       .then((data) => setAboutProduct(data.data));
 
     axios
-      .get(`http://${host}:8000/api-comment_list/${productId}`)
+      .get(`http://${host}:${port}/api-comment_list/${productId}`)
       .then((data) => setProductFeedback(data.data.comments));
   }, []);
 

@@ -1,6 +1,6 @@
 import Subcategory from './Subcategory';
 
-function Category({ host, name, nestedCategories, order, setOrder }) {
+function Category({ host, port, name, nestedCategories, order, setOrder }) {
   return (
     <>
       <div className="category">
@@ -13,6 +13,7 @@ function Category({ host, name, nestedCategories, order, setOrder }) {
               key={category.id}
               id={category.id}
               host={host}
+              port={port}
               name={category.name}
               order={order}
               setOrder={setOrder}

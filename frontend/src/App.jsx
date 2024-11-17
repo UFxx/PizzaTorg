@@ -12,7 +12,8 @@ import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const host = '31.128.41.110';
+  const host = '89.169.38.225';
+  const port = '8001';
 
   const [order, setOrder] = useState(() => {
     const savedOrder = localStorage.getItem('order');
@@ -29,6 +30,7 @@ function App() {
       <BrowserRouter>
         <Header
           host={host}
+          port={port}
           order={order}
           userData={userData}
           setUserData={setUserData}
@@ -36,19 +38,37 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Main host={host} order={order} setOrder={setOrder} />}
+            element={
+              <Main host={host} port={port} order={order} setOrder={setOrder} />
+            }
           />
           <Route
             path="/index"
-            element={<Main host={host} order={order} setOrder={setOrder} />}
+            element={
+              <Main host={host} port={port} order={order} setOrder={setOrder} />
+            }
           />
           <Route
             path="/category"
-            element={<Category host={host} order={order} setOrder={setOrder} />}
+            element={
+              <Category
+                host={host}
+                port={port}
+                order={order}
+                setOrder={setOrder}
+              />
+            }
           />
           <Route
             path="/product"
-            element={<Product host={host} order={order} setOrder={setOrder} />}
+            element={
+              <Product
+                host={host}
+                port={port}
+                order={order}
+                setOrder={setOrder}
+              />
+            }
           />
           <Route
             path="/cart"
@@ -57,19 +77,29 @@ function App() {
           <Route
             path="/order-form"
             element={
-              <OrderForm host={host} order={order} userData={userData} />
+              <OrderForm
+                host={host}
+                port={port}
+                order={order}
+                userData={userData}
+              />
             }
           />
           <Route path="/order-successful" element={<SuccessfulOrder />} />
           <Route
             path="/search"
             element={
-              <SearchPage host={host} order={order} setOrder={setOrder} />
+              <SearchPage
+                host={host}
+                port={port}
+                order={order}
+                setOrder={setOrder}
+              />
             }
           />
           <Route
             path="/profile"
-            element={<Profile host={host} userData={userData} />}
+            element={<Profile host={host} port={port} userData={userData} />}
           />
         </Routes>
         <Footer />
