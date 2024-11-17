@@ -4,7 +4,7 @@ import closeIcon from '../../assets/images/times-white.png';
 import axios from 'axios';
 import { useState } from 'react';
 
-function Registration({ setOpenLogin, setOpenRegistration }) {
+function Registration({ host, setOpenLogin, setOpenRegistration }) {
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(true);
 
