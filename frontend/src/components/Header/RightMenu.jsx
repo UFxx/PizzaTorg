@@ -72,7 +72,7 @@ function RightMenu({ host, port, order, userData, setUserData }) {
           {localStorage.getItem('JWT') ? (
             <p>{userData?.first_name}</p>
           ) : (
-            <p>Профиль</p>
+            <p>Войти</p>
           )}
         </Link>
       </div>

@@ -7,7 +7,7 @@ import RecomendedProduct from './Recomendations/RecomendedProduct';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Product({ host, port, order, setOrder }) {
+function Product({ host, port, userData, order, setOrder }) {
   const [aboutProduct, setAboutProduct] = useState();
   const [productFeedback, setProductFeedback] = useState();
 
@@ -54,7 +54,7 @@ function Product({ host, port, order, setOrder }) {
               return (
                 <FeedbackItem
                   key={feedback.id}
-                  username={feedback.username}
+                  username={feedback.user.first_name}
                   commentDate={feedback.created}
                   text={feedback.text}
                   ratingScore={feedback.rating}
@@ -66,7 +66,18 @@ function Product({ host, port, order, setOrder }) {
         </div>
         <div className="leave-a-feedback">
           <div className="leave-a-feedback__title">Оставить отзыв</div>
-          <LeaveFeedbackForm host={host} productId={productId} />
+          {localStorage.getItem('JWT') ? (
+            <LeaveFeedbackForm
+              userData={userData}
+              host={host}
+              port={port}
+              productId={productId}
+            />
+          ) : (
+            <p style={{ fontSize: 24, marginTop: 20 }}>
+              Авторизуйтесь, чтобы оставить отзыв
+            </p>
+          )}
         </div>
         {aboutProduct?.get_similar_products.length < 1 ? null : (
           <div className="recomended-products">

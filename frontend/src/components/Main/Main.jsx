@@ -26,7 +26,6 @@ function Main({ host, port, order, setOrder }) {
 
   useEffect(() => {
     const slides = slider.current.childElementCount;
-    console.log(offset);
 
     if (sliderOffset > 0) {
       setSliderOffset((slides - 1) * -offset);

@@ -2,7 +2,7 @@ function Footer() {
   return (
     <footer>
       <div className="footer-content">
-        <p>© 2024 ПиццаТорг</p>
+        <p>© 2024 МосПироги</p>
       </div>
     </footer>
   );

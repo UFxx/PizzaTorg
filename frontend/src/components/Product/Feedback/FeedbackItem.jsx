@@ -1,6 +1,8 @@
 import ProductRating from '../../ProductRating/ProductRating';
 
 function FeedbackItem({ username, commentDate, text, ratingScore }) {
+  console.log(username);
+
   const rating = [];
   for (let i = 0; i < ratingScore; i++) {
     rating.push(<ProductRating key={i} />);

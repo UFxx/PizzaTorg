@@ -409,11 +409,11 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .header-mobile-menu__list {
+    display: none;
     position: absolute;
     top: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%);
-    display: none;
     flex-direction: column;
     row-gap: 10px;
     border-radius: 5px;
