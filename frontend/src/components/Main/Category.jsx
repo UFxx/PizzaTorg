@@ -5,7 +5,7 @@ function Category({ host, port, name, nestedCategories, order, setOrder }) {
     <>
       <div className="category">
         <div className="category-title">
-          <p>{name}</p>
+          <h2>{name}</h2>
         </div>
         {nestedCategories?.map((category) => {
           return (

@@ -14,7 +14,7 @@ function Subcategory({ host, port, id, name, order, setOrder }) {
   return (
     <>
       <div className="subcategory-title">
-        <p>{name}</p>
+        <h3>{name}</h3>
         <div className="category-line"></div>
       </div>
       <div className="category-content">

@@ -29,7 +29,7 @@ function Product({ id, img, name, price, order, setOrder }) {
     <>
       <div className="product">
         <Link to={`/product?id=${id}`}>
-          <img src={img} alt="" />
+          <img src={img} alt={name} />
         </Link>
         <div className="product-name">
           <Link to={`/product?id=${id}`}>{name}</Link>

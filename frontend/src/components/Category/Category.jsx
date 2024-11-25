@@ -6,7 +6,12 @@ function Category({ host, port, order, setOrder }) {
   const [data, setData] = useState();
   const [categoryProducts, setCategoryProducts] = useState();
 
-  const categoryId = new URL(document.location).searchParams.get('id');
+  let categoryId;
+  if (!new URL(document.location).searchParams.get('id')) {
+    window.location.href = '/index';
+  } else {
+    categoryId = new URL(document.location).searchParams.get('id');
+  }
 
   useEffect(() => {
     axios

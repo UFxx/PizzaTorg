@@ -11,7 +11,12 @@ function Product({ host, port, userData, order, setOrder }) {
   const [aboutProduct, setAboutProduct] = useState();
   const [productFeedback, setProductFeedback] = useState();
 
-  const productId = new URL(window.location).searchParams.get('id');
+  let productId;
+  if (!new URL(document.location).searchParams.get('id')) {
+    window.location.href = '/index';
+  } else {
+    productId = new URL(document.location).searchParams.get('id');
+  }
 
   useEffect(() => {
     axios

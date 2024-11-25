@@ -24,12 +24,12 @@ function Header({ host, port, order, userData, setUserData }) {
           <div className="logo">
             <div>
               <Link to="/index" className="logo-name">
-                МосПироги
+                {document.title}
               </Link>
               <div className="logo-circle"></div>
             </div>
             <div className="logo-info">
-              <p>8-925-168-88-12</p>
+              <p>8-936-938-88-71</p>
               <p>Пн—Вс 7:00—20:00</p>
             </div>
           </div>
