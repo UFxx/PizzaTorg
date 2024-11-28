@@ -13,7 +13,21 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const host = '89.169.38.225';
-  const port = '8004';
+  const port = getPort();
+
+  function getPort() {
+    const title = document.title;
+    switch (title) {
+      case 'МосПироги':
+        return 8001;
+      case 'МосПекарня':
+        return 8002;
+      case 'ПиццаРядом':
+        return 8003;
+      case 'ПиццаШок':
+        return 8004;
+    }
+  }
 
   const [order, setOrder] = useState(() => {
     const savedOrder = localStorage.getItem('order');

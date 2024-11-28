@@ -16,20 +16,57 @@ function Header({ host, port, order, userData, setUserData }) {
       .then((data) => setData(data.data.categories));
   }, []);
 
+  const title = document.title;
+  function getTel() {
+    switch (title) {
+      case 'МосПироги':
+        return '8-925-168-88-12';
+      case 'МосПекарня':
+        return '8-925-278-88-76';
+      case 'ПиццаРядом':
+        return '8-925-228-88-96';
+      case 'ПиццаШок':
+        return '8-936-938-88-71';
+    }
+  }
+
+  function getColor() {
+    switch (title) {
+      case 'МосПироги':
+        return '#88DD55';
+      case 'МосПекарня':
+        return '#f6c814';
+      case 'ПиццаРядом':
+        return '#FFFFFF';
+      case 'ПиццаШок':
+        return '#babbdf';
+    }
+  }
+
   return (
     <>
       <header>
-        <div className="green-line"></div>
+        <div
+          className="green-line"
+          style={{ backgroundColor: getColor() }}
+        ></div>
         <div className="header-content">
           <div className="logo">
             <div>
-              <Link to="/index" className="logo-name">
+              <Link
+                to="/index"
+                className="logo-name"
+                style={{ color: getColor() }}
+              >
                 {document.title}
               </Link>
-              <div className="logo-circle"></div>
+              <div
+                className="logo-circle"
+                style={{ backgroundColor: getColor() }}
+              ></div>
             </div>
             <div className="logo-info">
-              <p>8-936-938-88-71</p>
+              <p>{getTel()}</p>
               <p>Пн—Вс 7:00—20:00</p>
             </div>
           </div>
