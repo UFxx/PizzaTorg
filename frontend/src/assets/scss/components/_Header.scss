@@ -132,6 +132,7 @@ li:hover .menu-item__extended {
   align-items: center;
   justify-content: space-between;
   column-gap: 20px;
+  z-index: 2;
   a {
     color: white;
   }

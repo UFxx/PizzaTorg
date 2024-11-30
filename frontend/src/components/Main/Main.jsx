@@ -1,61 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
-import arrowLeft from '../../assets/images/index/arrow-left.png';
-import SliderItem from './SliderItem';
+import { useEffect, useState } from 'react';
+
 import Category from './Category';
 import Contacts from './Contacts';
 import axios from 'axios';
-import banner from '../../assets/images/index/banner.png';
-import banner1 from '../../assets/images/index/banner1.png';
-import banner2 from '../../assets/images/index/banner2.png';
-import banner3 from '../../assets/images/index/banner3.png';
+import Banner1 from './Banners/Banner1';
+import Banner2 from './Banners/Banner2';
+import Banner3 from './Banners/Banner3';
 
 function Main({ host, port, order, setOrder }) {
-  const [sliderOffset, setSliderOffset] = useState(0);
   const [allCategories, setAllCategories] = useState();
-  const slider = useRef();
-  const offset = getOffset();
-
-  function getOffset() {
-    if (window.innerWidth >= 1015) {
-      return 750;
-    } else if (window.innerWidth < 426) {
-      return 270;
-    } else if (window.innerWidth < 500) {
-      return 320;
-    } else if (window.innerWidth < 670) {
-      return 400;
-    } else if (window.innerWidth < 1015) {
-      return 500;
-    }
-  }
+  const title = document.title;
 
   useEffect(() => {
-    const slides = slider.current.childElementCount;
-
-    if (sliderOffset > 0) {
-      setSliderOffset((slides - 1) * -offset);
-    } else if (sliderOffset <= -slides * offset) {
-      setSliderOffset(0);
-    }
-
     axios
       .get(`http://${host}:${port}/api-category/`)
       .then((data) => setAllCategories(data.data.categories));
-  }, [sliderOffset]);
+  }, []);
 
-  const title = document.title;
-  function getImage() {
-    switch (title) {
-      case 'МосПироги':
-        return `url(${banner})`;
-      case 'МосПекарня':
-        return `url(${banner1})`;
-      case 'ПиццаРядом':
-        return `url(${banner2})`;
-      case 'ПиццаШок':
-        return `url(${banner3})`;
-    }
-  }
   function getMapLink() {
     switch (title) {
       case 'МосПироги':
@@ -71,36 +32,9 @@ function Main({ host, port, order, setOrder }) {
 
   return (
     <>
-      <div className="promotion-banner">
-        <div
-          className="banner-bg"
-          style={{ backgroundImage: getImage() }}
-        ></div>
-        <div
-          className="button-arrow__left"
-          onClick={() => setSliderOffset(sliderOffset + offset)}
-        >
-          <img src={arrowLeft} alt="" />
-        </div>
-        <div className="banner-slider">
-          <div
-            className="banner-slider__line"
-            style={{ marginLeft: sliderOffset }}
-            ref={slider}
-          >
-            <SliderItem text="Следующий заказ -5% Самовывоз -10%" />
-            <SliderItem text="Быстрая доставка. Каждый день без выходных с 8:30 до 22:00!" />
-            <SliderItem text="В День Рождения получи пирог в подарок!" />
-            <SliderItem text="При заказе от 1000 рублей - доставка по Москве бесплатно!" />
-          </div>
-        </div>
-        <div
-          className="button-arrow__right"
-          onClick={() => setSliderOffset(sliderOffset - offset)}
-        >
-          <img src={arrowLeft} alt="" />
-        </div>
-      </div>
+      {title === 'МосПироги' ? <Banner1 /> : null}
+      {title === 'МосПекарня' ? <Banner2 /> : null}
+      {title === 'ПиццаШок' ? <Banner3 /> : null}
       <div className="category-container">
         {allCategories?.map((category) => {
           return (

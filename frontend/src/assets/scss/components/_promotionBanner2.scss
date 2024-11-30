@@ -1,0 +1,28 @@
+.promotion-banner2 {
+  display: flex;
+  a {
+    width: 50%;
+    position: relative;
+    img {
+      margin: -2px;
+      width: 50%;
+      filter: blur(4px);
+      height: calc(100% + 80px);
+      transition: 0.3s ease filter;
+    }
+    img:first-child {
+      padding-right: 10px;
+    }
+    &:hover img {
+      filter: blur(0);
+    }
+    p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 72px;
+    }
+  }
+}

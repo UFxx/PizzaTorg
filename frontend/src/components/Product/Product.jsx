@@ -18,6 +18,8 @@ function Product({ host, port, userData, order, setOrder }) {
     productId = new URL(document.location).searchParams.get('id');
   }
 
+  window.scrollTo({ top: 0 });
+
   useEffect(() => {
     axios
       .get(`http://${host}:${port}/api-product_detail/${productId}/`)
