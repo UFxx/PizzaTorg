@@ -67,7 +67,7 @@ function Header({ host, port, order, userData, setUserData }) {
             </div>
             <div className="logo-info">
               <p>{getTel()}</p>
-              <p>Пн—Вс 7:00—20:00</p>
+              <p>Пн—Вс 8:00—20:00</p>
             </div>
           </div>
           <nav className="header-menu">

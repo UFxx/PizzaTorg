@@ -6,6 +6,7 @@ import axios from 'axios';
 import Banner1 from './Banners/Banner1';
 import Banner2 from './Banners/Banner2';
 import Banner3 from './Banners/Banner3';
+import Banner4 from './Banners/Banner4';
 
 function Main({ host, port, order, setOrder }) {
   const [allCategories, setAllCategories] = useState();
@@ -35,7 +36,8 @@ function Main({ host, port, order, setOrder }) {
       {title === 'МосПироги' ? <Banner1 /> : null}
       {title === 'МосПекарня' ? <Banner2 /> : null}
       {title === 'ПиццаШок' ? <Banner3 /> : null}
-      <div className="category-container">
+      {title === 'ПиццаРядом' ? <Banner4 /> : null}
+      <div className="category-container" id={'category-container'}>
         {allCategories?.map((category) => {
           return (
             <Category

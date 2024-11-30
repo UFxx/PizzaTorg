@@ -1,8 +1,9 @@
 .promotion-banner3 {
   position: relative;
-  height: 550px;
+  height: 100svh;
   background-color: #babbdf;
   display: flex;
+  justify-content: center;
   align-items: center;
   &::before {
     position: absolute;
@@ -19,8 +20,18 @@
     color: white;
     font-size: 72px;
     width: 600px;
-    margin-left: 500px;
+    margin-left: 50px;
     text-shadow: #000 2px 2px 3px;
+  }
+  img {
+    margin-left: 50px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.3s ease opacity, 0.3s ease transform;
+    &:hover {
+      opacity: 1;
+      transform: translateX(5px);
+    }
   }
 }
 
@@ -35,5 +46,159 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1292px) {
+  .promotion-banner3 {
+    p {
+      margin-left: 350px;
+    }
+  }
+}
+
+@media (max-width: 1126px) {
+  .promotion-banner3 {
+    p {
+      margin-left: 250px;
+    }
+    img {
+      margin-left: 20px;
+    }
+  }
+}
+
+@media (max-width: 1035px) {
+  .promotion-banner3 {
+    &::before {
+      left: -300px;
+    }
+  }
+}
+
+@media (max-width: 968px) {
+  .promotion-banner3 {
+    p {
+      font-size: 56px;
+      width: 500px;
+      margin-left: 200px;
+    }
+    img {
+      width: 40px;
+      height: 30px;
+      margin-left: -20px;
+    }
+    &::before {
+      width: 400px;
+      height: 400px;
+      left: -200px;
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .promotion-banner3 {
+    &::before {
+      left: 25%;
+      top: 10px;
+    }
+    p {
+      margin-top: 350px;
+      margin-left: 10px;
+      text-align: center;
+    }
+    img {
+      margin-top: 350px;
+      margin-left: 10px;
+    }
+  }
+}
+
+@media (max-width: 658px) {
+  .promotion-banner3 {
+    &::before {
+      left: 20%;
+    }
+  }
+}
+
+@media (max-width: 610px) {
+  .promotion-banner3 {
+    &::before {
+      width: 350px;
+      height: 350px;
+    }
+    p {
+      font-size: 48px;
+      width: 400px;
+      margin-top: 250px;
+    }
+    img {
+      margin-top: 250px;
+    }
+  }
+}
+
+@media (max-width: 546px) {
+  .promotion-banner3 {
+    flex-direction: column;
+    &::before {
+      width: 300px;
+      height: 300px;
+      left: 25%;
+    }
+    p {
+      margin-top: 200px;
+    }
+    img {
+      margin-top: 30px;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+@media (max-width: 489px) {
+  .promotion-banner3 {
+    overflow-x: hidden;
+    &::before {
+      width: 250px;
+      height: 250px;
+      left: 26%;
+    }
+    p {
+      margin-top: 150px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .promotion-banner3 + .category-container {
+    margin-top: -30px;
+  }
+}
+
+@media (max-width: 426px) {
+  .promotion-banner3 {
+    p {
+      margin-top: 100px;
+      width: 300px;
+      font-size: 46px;
+    }
+  }
+}
+
+@media (max-width: 382px) {
+  .promotion-banner3 {
+    &::before {
+      left: 20%;
+    }
+  }
+}
+
+@media (max-width: 341px) {
+  .promotion-banner3 {
+    &::before {
+      left: 15%;
+    }
   }
 }
