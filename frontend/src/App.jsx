@@ -12,6 +12,10 @@ import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
+  if (window.location.pathname) {
+    
+  }
+  
   const host = '89.169.38.225';
   const port = getPort();
 
@@ -116,6 +120,7 @@ function App() {
             path="/profile"
             element={<Profile host={host} port={port} userData={userData} />}
           />
+          <Route path="*" element={<Main host={host} port={port} order={order} setOrder={setOrder} />} />
         </Routes>
         <Footer />
       </BrowserRouter>
