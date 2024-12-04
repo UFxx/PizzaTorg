@@ -1,6 +1,6 @@
 import Subcategory from './Subcategory';
 
-function Category({ host, port, name, nestedCategories, order, setOrder }) {
+function Category({protocol, host, port, name, nestedCategories, order, setOrder }) {
   const title = document.title;
   const linearGradient = `linear-gradient(180deg, rgba(${getColor()},1) 0%, rgba(235, 235, 235, 1) 60%)`;
 
@@ -28,6 +28,7 @@ function Category({ host, port, name, nestedCategories, order, setOrder }) {
             <Subcategory
               key={category.id}
               id={category.id}
+              protocol={protocol}
               host={host}
               port={port}
               name={category.name}

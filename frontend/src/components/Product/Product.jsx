@@ -7,7 +7,7 @@ import RecomendedProduct from './Recomendations/RecomendedProduct';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Product({ host, port, userData, order, setOrder }) {
+function Product({protocol, host, port, userData, order, setOrder }) {
   const [aboutProduct, setAboutProduct] = useState();
   const [productFeedback, setProductFeedback] = useState();
 
@@ -22,11 +22,11 @@ function Product({ host, port, userData, order, setOrder }) {
 
   useEffect(() => {
     axios
-      .get(`http://${host}:${port}/api-product_detail/${productId}/`)
+      .get(`${protocol}://${host}:${port}/api-product_detail/${productId}/`)
       .then((data) => setAboutProduct(data.data));
 
     axios
-      .get(`http://${host}:${port}/api-comment_list/${productId}`)
+      .get(`${protocol}://${host}:${port}/api-comment_list/${productId}`)
       .then((data) => setProductFeedback(data.data.comments));
   }, []);
 
@@ -76,6 +76,7 @@ function Product({ host, port, userData, order, setOrder }) {
           {localStorage.getItem('JWT') ? (
             <LeaveFeedbackForm
               userData={userData}
+              protocol={protocol}
               host={host}
               port={port}
               productId={productId}

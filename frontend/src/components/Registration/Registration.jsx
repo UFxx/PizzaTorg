@@ -4,7 +4,7 @@ import closeIcon from '../../assets/images/times-white.png';
 import axios from 'axios';
 import { useState } from 'react';
 
-function Registration({ host, port, setOpenLogin, setOpenRegistration }) {
+function Registration({protocol, host, port, setOpenLogin, setOpenRegistration }) {
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const [isEmailValid, setIsEmailValid] = useState(true);
 
@@ -26,7 +26,7 @@ function Registration({ host, port, setOpenLogin, setOpenRegistration }) {
       password: password,
       repeat_password: repeatPassword
     };
-    axios.post(`http://${host}:${port}/api-register/`, data).then((data) => {
+    axios.post(`${protocol}://${host}:${port}/api-register/`, data).then((data) => {
       if (data.status === 201) {
         setOpenLogin(true);
         setOpenRegistration(false);

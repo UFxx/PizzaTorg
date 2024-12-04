@@ -3,7 +3,7 @@ import ProductCard from '../Category/ProductCard';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function SearchPage({ host, port, order, setOrder }) {
+function SearchPage({ protocol, host, port, order, setOrder }) {
   const [data, setData] = useState();
 
   const searchText = new URL(window.location).searchParams.get('search');
@@ -11,7 +11,7 @@ function SearchPage({ host, port, order, setOrder }) {
   useEffect(() => {
     axios
       .get(
-        `http://${host}:${port}/api-product_cards_list/0/?search=${searchText}`
+        `${protocol}://${host}:${port}/api-product_cards_list/0/?search=${searchText}`
       )
       .then((data) => setData(data.data.products));
   }, []);

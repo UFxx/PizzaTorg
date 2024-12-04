@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import Product from './Product';
 import axios from 'axios';
 
-function Subcategory({ host, port, id, name, order, setOrder }) {
+function Subcategory({protocol, host, port, id, name, order, setOrder }) {
   const [products, setProducts] = useState();
 
   useEffect(() => {
     axios
-      .get(`http://${host}:${port}/api-product_cards_list/${id}/`)
+      .get(`${protocol}://${host}:${port}/api-product_cards_list/${id}/`)
       .then((data) => setProducts(data.data.products));
   }, []);
 

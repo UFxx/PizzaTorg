@@ -32,7 +32,7 @@ function Contacts() {
       <div className="contacts-content">
         <ContactsItem title="Контакты:" text={getTel()} />
         <ContactsItem title="Адрес пекарни:" text={getAddress()} />
-        <ContactsItem title="Время работы:" text="Пн—Вс. 7:00—20:00" />
+        <ContactsItem title="Время работы:" text="Пн—Вс. 8:00—20:00" />
       </div>
     </>
   );

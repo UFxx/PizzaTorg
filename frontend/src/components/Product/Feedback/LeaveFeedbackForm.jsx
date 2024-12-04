@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function LeaveFeedbackForm({ host, port, userData, productId }) {
+function LeaveFeedbackForm({protocol, host, port, userData, productId }) {
   function createNewComment(button) {
     const form = button.parentElement;
     const username = form.children[1].value;
@@ -14,7 +14,7 @@ function LeaveFeedbackForm({ host, port, userData, productId }) {
 
     axios
       .post(
-        `http://${host}:${port}/api-new_comment/`,
+        `${protocol}://${host}:${port}/api-new_comment/`,
         {
           username: username,
           email: userData?.email,

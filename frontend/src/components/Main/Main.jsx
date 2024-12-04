@@ -8,13 +8,13 @@ import Banner2 from './Banners/Banner2';
 import Banner3 from './Banners/Banner3';
 import Banner4 from './Banners/Banner4';
 
-function Main({ host, port, order, setOrder }) {
+function Main({protocol, host, port, order, setOrder }) {
   const [allCategories, setAllCategories] = useState();
   const title = document.title;
 
   useEffect(() => {
     axios
-      .get(`http://${host}:${port}/api-category/`)
+      .get(`${protocol}://${host}:${port}/api-category/`)
       .then((data) => setAllCategories(data.data.categories));
   }, []);
 
@@ -42,6 +42,7 @@ function Main({ host, port, order, setOrder }) {
           return (
             <Category
               key={category.id}
+              protocol={protocol}
               host={host}
               port={port}
               name={category.name}

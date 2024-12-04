@@ -9,7 +9,7 @@ import Login from '../Login/Login';
 import Registration from '../Registration/Registration';
 import axios from 'axios';
 
-function RightMenu({ host, port, order, userData, setUserData }) {
+function RightMenu({protocol, host, port, order, userData, setUserData }) {
   const [openRightMenu, setOpenRightMenu] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegistration, setOpenRegistration] = useState(false);
@@ -23,7 +23,7 @@ function RightMenu({ host, port, order, userData, setUserData }) {
       };
 
       axios
-        .get(`http://${host}:${port}/api-user_detail/`, config)
+        .get(`${protocol}://${host}:${port}/api-user_detail/`, config)
         .then((data) => setUserData(data.data));
     }
 
@@ -78,6 +78,7 @@ function RightMenu({ host, port, order, userData, setUserData }) {
       </div>
       {openLogin && !localStorage.getItem('JWT') ? (
         <Login
+          protocol={protocol}
           host={host}
           port={port}
           setOpenLogin={setOpenLogin}
@@ -86,6 +87,7 @@ function RightMenu({ host, port, order, userData, setUserData }) {
       ) : null}
       {openRegistration && !localStorage.getItem('JWT') ? (
         <Registration
+          protocol={protocol}
           host={host}
           port={port}
           setOpenLogin={setOpenLogin}

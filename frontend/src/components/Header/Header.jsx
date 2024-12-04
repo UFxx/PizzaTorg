@@ -7,12 +7,12 @@ import MainMenuItem from './MainMenuItem';
 import Search from './Search';
 import RightMenu from './RightMenu';
 
-function Header({ host, port, order, userData, setUserData }) {
+function Header({protocol, host, port, order, userData, setUserData }) {
   const [data, setData] = useState();
 
   useEffect(() => {
     axios
-      .get(`http://${host}:${port}/api-category/`)
+      .get(`${protocol}://${host}:${port}/api-category/`)
       .then((data) => setData(data.data.categories));
   }, []);
 
@@ -88,6 +88,7 @@ function Header({ host, port, order, userData, setUserData }) {
           <div className="right-menu">
             <Search />
             <RightMenu
+              protocol={protocol}
               host={host}
               port={port}
               order={order}

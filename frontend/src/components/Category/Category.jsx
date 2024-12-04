@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 import axios from 'axios';
 
-function Category({ host, port, order, setOrder }) {
+function Category({protocol, host, port, order, setOrder }) {
   const [data, setData] = useState();
   const [categoryProducts, setCategoryProducts] = useState();
 
@@ -15,11 +15,11 @@ function Category({ host, port, order, setOrder }) {
 
   useEffect(() => {
     axios
-      .get(`http://${host}:${port}/api-category_detail/${categoryId}/`)
+      .get(`${protocol}://${host}:${port}/api-category_detail/${categoryId}/`)
       .then((data) => setData(data.data));
 
     axios
-      .get(`http://${host}:${port}/api-product_cards_list/${categoryId}/`)
+      .get(`${protocol}://${host}:${port}/api-product_cards_list/${categoryId}/`)
       .then((data) => setCategoryProducts(data.data.products));
   }, []);
 
