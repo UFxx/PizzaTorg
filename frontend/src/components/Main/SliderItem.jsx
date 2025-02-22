@@ -2,7 +2,7 @@ function SliderItem({ text }) {
   return (
     <>
       <div className="banner-slider__item">
-        <p>{text}</p>
+        <h3>{text}</h3>
       </div>
     </>
   );

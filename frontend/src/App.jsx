@@ -12,8 +12,23 @@ import Footer from './components/Footer/Footer';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const host = '89.169.38.225';
-  const port = '8001';
+  const protocol = 'https'
+  const host = 'pirogimsc.ru';
+  const port = getPort();
+
+  function getPort() {
+    const title = document.title;
+    switch (title) {
+      case 'МосПироги':
+        return 8001;
+      case 'МосПекарня':
+        return 8002;
+      case 'ПиццаРядом':
+        return 8003;
+      case 'ПиццаШок':
+        return 8004;
+    }
+  }
 
   const [order, setOrder] = useState(() => {
     const savedOrder = localStorage.getItem('order');
@@ -29,6 +44,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header
+          protocol={protocol}
           host={host}
           port={port}
           order={order}
@@ -39,19 +55,20 @@ function App() {
           <Route
             path="/"
             element={
-              <Main host={host} port={port} order={order} setOrder={setOrder} />
+              <Main protocol={protocol} host={host} port={port} order={order} setOrder={setOrder} />
             }
           />
           <Route
             path="/index"
             element={
-              <Main host={host} port={port} order={order} setOrder={setOrder} />
+              <Main protocol={protocol} host={host} port={port} order={order} setOrder={setOrder} />
             }
           />
           <Route
             path="/category"
             element={
               <Category
+                protocol={protocol}
                 host={host}
                 port={port}
                 order={order}
@@ -63,8 +80,10 @@ function App() {
             path="/product"
             element={
               <Product
+                protocol={protocol}
                 host={host}
                 port={port}
+                userData={userData}
                 order={order}
                 setOrder={setOrder}
               />
@@ -78,6 +97,7 @@ function App() {
             path="/order-form"
             element={
               <OrderForm
+                protocol={protocol}
                 host={host}
                 port={port}
                 order={order}
@@ -90,6 +110,7 @@ function App() {
             path="/search"
             element={
               <SearchPage
+                protocol={protocol}
                 host={host}
                 port={port}
                 order={order}
@@ -99,8 +120,9 @@ function App() {
           />
           <Route
             path="/profile"
-            element={<Profile host={host} port={port} userData={userData} />}
+            element={<Profile protocol={protocol} host={host} port={port} userData={userData} />}
           />
+          <Route path="*" element={<Main protocol={protocol} host={host} port={port} order={order} setOrder={setOrder} />} />
         </Routes>
         <Footer />
       </BrowserRouter>

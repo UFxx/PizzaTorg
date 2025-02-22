@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import closeIcon from '../../assets/images/times-white.png';
 import axios from 'axios';
 
-function Login({ host, port, setOpenLogin, setOpenRegistration }) {
+function Login({protocol, host, port, setOpenLogin, setOpenRegistration }) {
   function login(button) {
     const username =
       button.parentElement.previousElementSibling.previousElementSibling;
@@ -15,7 +15,7 @@ function Login({ host, port, setOpenLogin, setOpenRegistration }) {
     };
 
     axios
-      .post(`http://${host}:${port}/auth/jwt/create`, data)
+      .post(`${protocol}://${host}:${port}/auth/jwt/create`, data)
       .then((data) => {
         localStorage.setItem('JWT', data.data.access);
         if (data.status === 200) {

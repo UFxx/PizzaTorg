@@ -7,19 +7,26 @@ import RecomendedProduct from './Recomendations/RecomendedProduct';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Product({ host, port, order, setOrder }) {
+function Product({protocol, host, port, userData, order, setOrder }) {
   const [aboutProduct, setAboutProduct] = useState();
   const [productFeedback, setProductFeedback] = useState();
 
-  const productId = new URL(window.location).searchParams.get('id');
+  let productId;
+  if (!new URL(document.location).searchParams.get('id')) {
+    window.location.href = '/index';
+  } else {
+    productId = new URL(document.location).searchParams.get('id');
+  }
+
+  window.scrollTo({ top: 0 });
 
   useEffect(() => {
     axios
-      .get(`http://${host}:${port}/api-product_detail/${productId}/`)
+      .get(`${protocol}://${host}:${port}/api-product_detail/${productId}/`)
       .then((data) => setAboutProduct(data.data));
 
     axios
-      .get(`http://${host}:${port}/api-comment_list/${productId}`)
+      .get(`${protocol}://${host}:${port}/api-comment_list/${productId}`)
       .then((data) => setProductFeedback(data.data.comments));
   }, []);
 
@@ -54,7 +61,7 @@ function Product({ host, port, order, setOrder }) {
               return (
                 <FeedbackItem
                   key={feedback.id}
-                  username={feedback.username}
+                  username={feedback.user.first_name}
                   commentDate={feedback.created}
                   text={feedback.text}
                   ratingScore={feedback.rating}
@@ -66,7 +73,19 @@ function Product({ host, port, order, setOrder }) {
         </div>
         <div className="leave-a-feedback">
           <div className="leave-a-feedback__title">Оставить отзыв</div>
-          <LeaveFeedbackForm host={host} productId={productId} />
+          {localStorage.getItem('JWT') ? (
+            <LeaveFeedbackForm
+              userData={userData}
+              protocol={protocol}
+              host={host}
+              port={port}
+              productId={productId}
+            />
+          ) : (
+            <p style={{ fontSize: 24, marginTop: 20 }}>
+              Авторизуйтесь, чтобы оставить отзыв
+            </p>
+          )}
         </div>
         {aboutProduct?.get_similar_products.length < 1 ? null : (
           <div className="recomended-products">

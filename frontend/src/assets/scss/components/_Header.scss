@@ -1,5 +1,4 @@
 .green-line {
-  background-color: #88dd55;
   height: 4px;
   width: 100%;
 }
@@ -26,14 +25,9 @@
   column-gap: 5px;
 }
 
-.logo-name {
-  color: #88dd55;
-}
-
 .logo-circle {
   width: 15px;
   height: 15px;
-  background-color: #88dd55;
   border-radius: 100%;
 }
 
@@ -138,6 +132,7 @@ li:hover .menu-item__extended {
   align-items: center;
   justify-content: space-between;
   column-gap: 20px;
+  z-index: 2;
   a {
     color: white;
   }
@@ -409,11 +404,11 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .header-mobile-menu__list {
+    display: none;
     position: absolute;
     top: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%);
-    display: none;
     flex-direction: column;
     row-gap: 10px;
     border-radius: 5px;

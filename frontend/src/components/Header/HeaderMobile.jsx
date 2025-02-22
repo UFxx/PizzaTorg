@@ -2,7 +2,7 @@ import HeaderMobileItem from './HeaderMobileItem';
 
 function HeaderMobile({ data }) {
   function toggleMobileMenu() {
-    const mobileMenu = document.querySelector('.header-mobile-menu ul');
+    const mobileMenu = document.querySelector('.header-mobile-menu__list');
     mobileMenu.classList.toggle('header-mobile-menu__open');
   }
 

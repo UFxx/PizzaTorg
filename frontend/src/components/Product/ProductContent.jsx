@@ -63,7 +63,7 @@ function ProductContent({
       <div className="product-title">{productName}</div>
       <div className="product-content">
         <div className="product-img">
-          <img src={productPhoto} alt="" />
+          <img src={productPhoto} alt={productName} />
         </div>
         <div className="product-info">
           <p className="available">{isAvailable}</p>
