@@ -1,0 +1,63 @@
+.promotion-banner2 {
+  display: flex;
+  height: 90svh;
+  a {
+    width: 50%;
+    position: relative;
+    img {
+      margin: -2px;
+      margin-left: -10px;
+      filter: blur(2px);
+      height: calc(100% + 80px);
+      width: 100%;
+      transition: 0.3s ease filter;
+    }
+    &:hover img {
+      filter: blur(0);
+    }
+    p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 72px;
+      text-shadow: #000 2px 2px 3px;
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+  .promotion-banner2 {
+    height: 100%;
+    overflow: hidden;
+    flex-direction: column;
+    a {
+      width: 100%;
+      margin-left: 10px;
+    }
+  }
+  .promotion-banner2 + .category-container {
+    margin-top: -70px;
+  }
+}
+
+@media (max-width: 573px) {
+  .promotion-banner2 {
+    a {
+      p {
+        font-size: 48px;
+      }
+    }
+  }
+}
+
+@media (max-width: 376px) {
+  .promotion-banner2 {
+    a {
+      p {
+        font-size: 32px;
+      }
+    }
+  }
+}

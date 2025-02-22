@@ -1,6 +1,6 @@
 from django.core.mail import send_mail
 
-HOST = 'http://31.128.41.110:8000/admin/core/order/'
+HOST = 'https://pirogimsc.ru:8001/admin/core/order/'
 
 def send_new_order_email(order_id):
     send_mail(

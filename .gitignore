@@ -1,2 +1,8 @@
 /.venv/
 /.idea/
+nohup.out
+robots.txt
+
+node_modules
+package-lock.json
+.prettierrc

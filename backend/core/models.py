@@ -129,7 +129,7 @@ class Order(models.Model):
 
     )
     user = models.ForeignKey(User, on_delete=models.SET_NULL, verbose_name='Пользователь', null=True, blank=True)
-    address = models.CharField(max_length=14, verbose_name='Адрес', blank=True, null=True)
+    address = models.CharField(max_length=255, verbose_name='Адрес', blank=True, null=True)
     phone = models.CharField(verbose_name='Номер телефона', max_length=14, blank=True, null=True)
     order_points = SortedManyToManyField(OrderPoint, verbose_name="Пункт заказа")
     price = models.PositiveIntegerField(blank=True, null=True,  verbose_name='Цена заказа', )
