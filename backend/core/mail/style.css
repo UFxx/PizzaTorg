@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+div {
+  text-align: center;
+  margin: 20px 0;
+}
+
+table {
+  border-collapse: collapse;
+  max-width: 1200px;
+  margin: 0 auto 0 auto;
+}
+
+table tr:last-child {
+  color: green;
+  font-weight: bold;
+}
+
+th, td {
+  border: 1px solid black;
+  width: calc(1000px / 2);
+}
+
+td {
+  padding: 5px 10px;
+}
+
+div p:first-child {
+  color: red;
+  font-size: 24px;
+}
+
+div p span {
+  color: red;
+}
